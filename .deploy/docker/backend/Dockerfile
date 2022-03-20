@@ -13,6 +13,11 @@ RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 ###################################################
 
+
+RUN apt-get update && \
+    apt-get install -y libpq-dev && \
+    docker-php-ext-install pdo pdo_pgsql pgsql
+
 COPY .deploy/docker/backend/entrypoint.sh /entrypoint-component.sh
 
 EXPOSE 9000
