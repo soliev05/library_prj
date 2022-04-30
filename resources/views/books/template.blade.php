@@ -88,7 +88,8 @@ jQuery(document).ready(function($){
     <div class="logo opacity"><a href="index.html"><img src="/style/images/logo.png" alt="" /></a></div>
     <div class="social">
       <ul>
-        <li><a href="/admin"><img src="/style/images/icon-login.png" alt="" />Войти</a></li>
+        <li><a href="/login"><img src="" alt="" />Войти</a></li>
+        <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li>
        
       </ul>
     </div>

@@ -2,24 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Customer;
 
 class Login extends Controller
 {
    public function login(){
 
-       return view('login.index2');
+       return view('login.login');
     }
 
        public function getLogin(Request $request){
 
-        $user = User::where ('email',$request->request->get('email'))
-        ->where('password',User::hashPassword($request->request->get('password')))
+        $user = Customer::where ('email',$request->request->get('email'))
+        ->where('password',Customer::hashPassword($request->request->get('password')))
         ->get();
-           dd($user);
+         
+        if ($user->count()==1){
+
+           Session::push('CurrentUser', $user);
+   
+         }else 
+         {
+            Session::flash('error','Ползователь не найден');
+            redirect ('/login');
+         }
        
    }
 
+
+   
    
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\Registrate as RegistrateRequest;
+use App\Models\Customer;
 
 class Registrate extends Controller
 {
@@ -15,12 +16,12 @@ class Registrate extends Controller
  
         public function registrate(RegistrateRequest $request){
             
-            $user = new User();
-            $user->email = $request->request->get('email');
-            $user->password = User::hashPassword( $request->request->get('password'));
-            $user->name = $request->request->get('name');
+            $customer = new Customer();
+            $customer->email = $request->request->get('email');
+            $customer->password = Customer::hashPassword( $request->request->get('password'));
+            $customer->name = $request->request->get('name');
 
-            $user->save();
+            $customer->save();
 
             return redirect('/login');
         // dd ($user);        

@@ -15,12 +15,24 @@ use  App\Http\Controllers\Registrate;
 |
 */
 
-// Route::get('/', function () {
-//     return view('section.home', ['books_list'=> Books::all()]);
-// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('section.home', ['books_list'=> Books::all()]);
 });
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::post('/registrate', [Registrate::class,'registrate']);
+
+Route::get('/registrate', [Registrate::class,'index']);
+
+Route::post('/login', [Login::class,'getLogin']);
+
+Route::get('/login', [Login::class,'login']);
+
+
+ 
 
 Route::get('/books',function (){
     return view ('books.template', ['books_list'=> Books::all()]);
