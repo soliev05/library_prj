@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Books;
+use  App\Http\Controllers\Login;
+use  App\Http\Controllers\Registrate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +15,84 @@ use App\Models\Books;
 |
 */
 
+// Route::get('/', function () {
+//     return view('section.home', ['books_list'=> Books::all()]);
+// });
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/books',function (){
-    return view ('books.index', ['books_list'=> Books::all()]);
+    return view ('books.template', ['books_list'=> Books::all()]);
 });
+
+Route::get('/biznes-knigi',function (){
+    return view ('books.biznes');
+});
+
+Route::get('/sport-zdorove-krasota',function (){
+    return view ('books.index1');
+});
+
+Route::get('/Detskie-knigi',function (){
+    return view ('books.index1');
+});
+
+Route::get('/hobbi-dosug',function (){
+    return view ('books.index1');
+});
+
+Route::get('/roditelyam',function (){
+    return view ('books.index1');
+});
+
+Route::get('/istoriya',function (){
+    return view ('books.index1');
+});
+
+Route::get('/detskie-knigi',function (){
+    return view ('books.index1');
+});
+// Route::get('/',function (){
+//     return view ('books.index1');
+// });
+Route::get('/uchebnaya-i-nauchnaya-literatura',function (){
+    return view ('books.index1');
+});
+
+Route::get('/biografiya-memuari',function (){
+    return view ('books.index1');
+});
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+// require __DIR__.'/auth.php';
+
+
+
+
+
+// Route::get('/login',function (){
+//     return view ('login.index2');
+// });
+
+
+// Route::get('/login',function (){
+//     return view (getLogin());
+// });
+
+// Route::get('/login', [Login::class,'login']);
+
+
+// Route::post('/login', [Login::class,'getLogin']);
+
+
+// Route::post('/registrate', [Registrate::class,'registrate']);
+
+// Route::get('/registrate', [Registrate::class,'index']);
+
+
