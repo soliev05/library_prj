@@ -5,6 +5,8 @@ use App\Models\Books;
 use  App\Http\Controllers\Login;
 use  App\Http\Controllers\Registrate;
 use App\Http\Controllers\AboutBook;
+use App\Http\Controllers\BasketController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,7 +85,19 @@ Route::get('/biografiya-memuari',function (){
     return view ('books.index1');
 });
 
-Route::get('/{id}',[AboutBook::class,'getBook']);
+
+
+
+
+
+Route::get('/basket',[BasketController::class,'index']);
+
+Route::post('/basket',[BasketController::class,'store']);
+
+
+
+Route::get('/book/{id}',[AboutBook::class,'getBook']);
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

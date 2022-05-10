@@ -102,8 +102,36 @@
               <div><span>Объем:&nbsp;</span>{{ $books_id->count_page }}&nbsp;стр.</div>
 
               <div class="option">
-                  <button name='AddToMyBook' value='Добавить в Мои книги'>Добавить в Мои книги</button>
+                @if ( Session::has('CurrentUser') )
+                    @if ( $basket )
+                      <form action="/basket" method='post' >
+                          <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                          <input type="hidden" name='redirect' value='{{ Request::url() }}'>
+                          @csrf
+                          <input type='submit' name='removeFromBasket' value='Удалить из корзины'>
+
+                        </form>
+                    @else
+      
+                      <form action="/basket" method='post' >
+                        <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                        <input type="hidden" name='redirect' value='{{ Request::url() }}'>
+                        @csrf
+                        <input type='submit' name='AddToBasket' value='Добавить в Корзину'>
+
+                      </form>
+                  @endif
+
+                @else 
+                    <form action="/login" method='get' >
+                      <input type="submit" value='Войти'>
+                      <input type="hidden" name='redirect' value='{{ Request::url() }}'>
+                    </form>
+                @endif
               </div>
+
+
+              <div><button>Читать</button></div>
           </div>
         </div>
       </div>
@@ -171,15 +199,12 @@
 
                   <textarea name="message" class="text-area required"></textarea>
                 </li>
-                <li class="form-row hidden-row">
-                  <input type="hidden" name="hidden" value="" />
-                </li>
+               
                 <li class="button-row">
                   <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="btn-submit" />
                 </li>
               </ol>
-              <input type="hidden" name="v_error" id="v-error" value="Required" />
-              <input type="hidden" name="v_email" id="v-email" value="Enter a valid email" />
+            
             </fieldset>
           </form>
           <div class="response"></div>

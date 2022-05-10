@@ -104,15 +104,24 @@ jQuery(document).ready(function($){
   <div id="header">
     <div class="logo opacity"><a href="index.html"><img src="/style/images/logo.png" alt="" /></a></div>
     <div class="social">
-      @if (Session::has('CurrentUser'))
+
+      <!-- @if (Session::has('CurrentUser'))
       <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login">{{!! (Session::get('CurrentUser'))[0]->name !!}} </a>
       @else
       <ul>
         <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
         </li>
-        <!-- <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> -->
+         <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> 
       </ul>
-    @endif
+    @endif -->
+
+    <ul>
+      <!-- <li><a href="/"> Корзина</a></li> -->
+        <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
+        </li>
+         <!-- <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> -->
+
+      </ul>
     </div>
   </div>
   <div class="clear"></div>
