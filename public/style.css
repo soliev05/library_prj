@@ -70,7 +70,7 @@ table {
 	height:1%
 }
 .clearfix {
-	display:block
+	
 }
 th, td {
 	margin:0;
@@ -103,7 +103,7 @@ body {
 	font-size: 14px;
 }
 p {
-	font-size: 14px;
+	font-size: 17px;
 	line-height: 20px;
 }
 a {
@@ -117,7 +117,7 @@ a:hover {
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Museo500';
-	color: #4d87ab;
+	color: #e2e2e2;
 	font-weight: normal;
 	padding-bottom: 12px;
 }
@@ -345,10 +345,6 @@ pre {
 /*	LAYOUT
 /*-----------------------------------------------------------------------------------*/
 
-#wrapper {
-	width: 960px;
-	margin: 0 auto;
-}
 #header {
 	padding: 30px 0 25px 0;
 	display: block;
@@ -481,7 +477,7 @@ ul.flickr li img {
 	font-family: 'Museo500';
 	list-style: none;
 	font-weight: normal;
-	width: 960px;
+	width: 1020px;
 	padding: 0;
 	background: #FFF;
 	-webkit-box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.6);
@@ -961,6 +957,7 @@ div.showcase-tooltip {
 .form-container {
 	position: relative;
 	width: 700px;
+	margin-left: 100px;
 }
 .form-container .loading {
 	position: absolute;
@@ -1032,7 +1029,7 @@ div.showcase-tooltip {
 .forms fieldset .text-area {
 	background-color: #fff;
 	border:1px solid #dedede;
-	width: 380px;
+	width: 580px;
 	height: 140px;
 	resize: none;
 	color: #4d4d4d;
@@ -1050,18 +1047,21 @@ div.showcase-tooltip {
 .forms fieldset .select {
 }
 .forms fieldset .btn-submit {
+	font-family: 'PTSansRegular';
 	background: #5499c3 url(style/images/button.png) repeat-x;
 	border: none;
-	height: 27px;
+	width: 150px;
+	height: 35px;
+	
+	font-family: 'PTSansRegular';
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	color: #e2e2e2;
-	font-family: 'CharisSILItalic';
 	font-size: 14px;
-	padding: 0 20px 1px 20px;
+	padding: 4px 20px 1px 20px;
 	cursor: pointer;
-	margin-left: 80px;
+	margin-left: auto;
 }
 @media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
 	.forms fieldset .btn-submit {padding: 0 20px 2px 20px;}
@@ -1792,7 +1792,8 @@ table span.cross {
 /*-----------------------------------------------------------------------------------*/
 
 #comments {
-	width: 590px;
+
+	width: auto;
 }
 .full-width #comments {
 	width: 900px;
@@ -1804,7 +1805,7 @@ ol.commentlist .message p {
 }
 ol.commentlist {
 	list-style:none;
-	margin:0;
+	margin-left:100px;
 }
 ol.commentlist li {
 	margin: 0;
@@ -1851,7 +1852,7 @@ ol.commentlist li {
 	line-height:20px;
 	position:relative;
 	padding:0;
-	margin: 0;
+	margin-left: 10px;
 }
 .full-width #comments .message {
 	width:820px;

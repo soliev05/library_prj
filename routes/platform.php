@@ -17,8 +17,11 @@ use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
-
+use \App\Orchid\Screens\Books\BooksList;
+use \App\Orchid\Screens\Books\BookEditScreen;
+use \App\Orchid\Screens\Books\BookChangeScreen;
 /*
+ *
 |--------------------------------------------------------------------------
 | Dashboard Routes
 |--------------------------------------------------------------------------
@@ -29,7 +32,30 @@ use Tabuna\Breadcrumbs\Trail;
 |
 */
 
-// Main
+// Books
+Route::screen('books', BooksList::class)
+    ->name('platform.books');
+
+ Route::screen('books/create',BookEditScreen ::class)
+    ->name('platform.BookEditScreen');
+
+Route::screen('books/{books}/edit', BookChangeScreen::class)
+    ->name('platform.book.edit')
+    ->breadcrumbs(function (Trail $trail, $books) {
+        return $trail
+
+            ->push(__('Books'), route('platform.book.edit', $books));
+    });
+//Route::screen('books/{book}/edit', BookChangeScreen::class)
+//    ->name('platform.BookChangeScreen')
+//    ->breadcrumbs(function (Trail $trail, $books) {
+//        return $trail
+//            ->parent('platform.books')
+//            ->push(__('Books'), route('platform.BookChangeScreen', $books));
+//    });
+
+
+
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
 

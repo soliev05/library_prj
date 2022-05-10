@@ -40,13 +40,8 @@ class UserListLayout extends Table
                 ->cantHide()
                 ->filter(Input::make())
                 ->render(function (User $user) {
-                    return ModalToggle::make($user->email)
-                        ->modal('asyncEditUserModal')
-                        ->modalTitle($user->presenter()->title())
-                        ->method('saveUser')
-                        ->asyncParameters([
-                            'user' => $user->id,
-                        ]);
+                    return ModalToggle::make($user->email);
+
                 }),
 
             TD::make('updated_at', __('Last edit'))
@@ -69,7 +64,7 @@ class UserListLayout extends Table
 
                             Button::make(__('Delete'))
                                 ->icon('trash')
-                                ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
+                                ->confirm(__('Once the account '))
                                 ->method('remove', [
                                     'id' => $user->id,
                                 ]),

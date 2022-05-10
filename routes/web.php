@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Books;
 use  App\Http\Controllers\Login;
 use  App\Http\Controllers\Registrate;
+use App\Http\Controllers\AboutBook;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,12 @@ use  App\Http\Controllers\Registrate;
 Route::get('/', function () {
     return view('section.home', ['books_list'=> Books::all()]);
 });
+
+
+//Route::get('/{id}', function ($id) {
+//    return view('books.AboutBook', ['books_id' =>new AboutBook()]);
+//});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -32,7 +39,7 @@ Route::post('/login', [Login::class,'getLogin']);
 Route::get('/login', [Login::class,'login']);
 
 
- 
+
 
 Route::get('/books',function (){
     return view ('books.template', ['books_list'=> Books::all()]);
@@ -76,7 +83,7 @@ Route::get('/biografiya-memuari',function (){
     return view ('books.index1');
 });
 
-
+Route::get('/{id}',[AboutBook::class,'getBook']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

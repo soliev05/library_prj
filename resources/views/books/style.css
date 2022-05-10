@@ -1041,13 +1041,13 @@ div.showcase-tooltip {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-.forms fieldset .password {
-}
+
 .forms fieldset .text-area {
 	background-color: #fff;
 	border:1px solid #dedede;
-	width: 380px;
+	width: 500px;
 	height: 140px;
+	font-family: 'PTSansRegular';
 	resize: none;
 	color: #4d4d4d;
 	font-family: 'PTSansRegular';

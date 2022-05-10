@@ -21,12 +21,13 @@ class Login extends Controller
          
         if ($user->count()==1){
 
-           Session::push('CurrentUser', $user);
-   
+           Session::put('CurrentUser', $user);
+         // dd(  Session::all());
+           return redirect ('/');
          }else 
          {
             Session::flash('error','Ползователь не найден');
-            redirect ('/login');
+           return redirect ('/login')->withErrors(['Пользователь не найден']);
          }
        
    }

@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="style/css/ie9.css" media="all" />
 <![endif]-->
 <script type="text/javascript" src="style/js/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="style/js/jquery.masonry.min.js"></script> 
+<script type="text/javascript" src="style/js/jquery.masonry.min.js"></script>
 <script type="text/javascript" src="style/js/ddsmoothmenu.js"></script>
 <script type="text/javascript" src="style/js/transify.js"></script>
 <script type="text/javascript" src="style/js/twitter.min.js"></script>
@@ -34,8 +34,8 @@ jQuery(document).ready(function($){
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-      var 
+
+      var
         speed = 1000,   // animation speed
         $wall = $('#portfolio .items'),
 
@@ -48,11 +48,11 @@ $(document).ready(function() {
             queue: false
           }
         };
-		
+
 		$wall.imagesLoaded(function(){
-			
+
 			$wall.masonry(masonryOptions);
-			
+
 			// Create array of filters from link href
 			var arrFilter = [];
 			$('#filtering-nav a').each(function(){
@@ -61,14 +61,14 @@ $(document).ready(function() {
 					arrFilter.push(fhash);
 				}
 			});
-			
+
 			//  Get the parameter value after the # symbol
 			var url=document.URL.split('#')[1];
 			if(url == undefined){
 				url = 'all';
 			}
 			$('#filtering-nav a.'+url).parent().addClass('active');
-			
+
 			if(jQuery.inArray(url, arrFilter) > '-1'){
 				// set masonry options animate to false
 				masonryOptions.animate = false;
@@ -80,20 +80,20 @@ $(document).ready(function() {
 			$wall.masonry(masonryOptions);
 		//	imageFadeIn($(".box"));
 		$wall.animate({opacity: 1},1000);
-			
+
 		});
-		
+
 		$('#filtering-nav a').click(function(e){
 			var color = $(this).attr('class');
 			filterClass = '.' + color;
 			$('#filtering-nav li').removeClass('active');
 			$(this).parent().addClass('active');
-			
+
 			if(filterClass=='.all') {
 			  // show all hidden boxes
 			  $wall.children('.invis').toggleClass('invis').fadeIn(speed);
 			} else {
-			  // hide visible boxes 
+			  // hide visible boxes
 			  $wall.children().not(filterClass).not('.invis').toggleClass('invis').fadeOut(speed);
 			  // show hidden boxes
 			  $wall.children(filterClass+'.invis').toggleClass('invis').fadeIn(speed);
@@ -105,12 +105,12 @@ $(document).ready(function() {
 		});
 });
 $.fn.imagesLoaded = function(a) {
-	var 
+	var
 	b=this.find("img"),
 	c=[],
 	d=this,
 	e=b.length;
-	
+
 	if(!b.length){
 		a.call(this);
 		return this
@@ -126,7 +126,7 @@ $.fn.imagesLoaded = function(a) {
 	});
 	return this
 };
-  </script> 
+  </script>
 </head>
 <body>
 <!-- Fullscreen backgrounds -->
@@ -174,7 +174,7 @@ $.fn.imagesLoaded = function(a) {
       <li><a href="portfolio.html" class="active">Portfolio</a>
         <ul>
         	<li><a href="portfolio.html">Portfolio 5 Columns</a></li>
-      	  <li><a href="portfolio-post.html">Portfolio Post</a></li>
+      	  <li><a href="AboutBook.blade.php">Portfolio Post</a></li>
         </ul>
       </li>
       <li><a href="blog.html">Blog</a>
@@ -201,13 +201,13 @@ $.fn.imagesLoaded = function(a) {
     </ul>
     <br style="clear: left" />
   </div>
-  <!-- End Menu -->  
-  
+  <!-- End Menu -->
+
   <!-- Begin Container -->
   <div id="container" class="opacity">
     <h2>Our Portfolio</h2>
     <p>Pellentesque congue, lorem sed pulvinar faucibus, neque elit ullamcorper mi, in pretium odio dolor et ligula. Nullam ultricies ullamcorper turpis id semper. Vestibulum vel turpis sit amet lectus tincidunt euismod. Vestibulum suscipit neque bibendum sapien auctor luctus.</p>
-    
+
     <!-- Begin Portfolio -->
       <div id="portfolio">
         <ul id="filtering-nav">
@@ -220,24 +220,24 @@ $.fn.imagesLoaded = function(a) {
         <div class="clear"></div>
         <div class="items">
           <div class="box col5 cat1"><a href="style/images/art/p1.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p1.jpg" alt="" /></a></div>
-          <div class="box col5 cat2"><a href="portfolio-post.html"><span class="overlay details"></span><img src="style/images/art/p2.jpg" alt="" /></a></div>
+          <div class="box col5 cat2"><a href="AboutBook.blade.php"><span class="overlay details"></span><img src="style/images/art/p2.jpg" alt="" /></a></div>
           <div class="box col5 cat1"><a href="style/images/art/p3.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p3.jpg" alt="" /></a></div>
           <div class="box col5 cat2"><a href="style/images/art/p4.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p4.jpg" alt="" /></a></div>
-          <div class="box col5 cat1"><a href="portfolio-post.html"><span class="overlay details"></span><img src="style/images/art/p5.jpg" alt="" /></a></div>
+          <div class="box col5 cat1"><a href="AboutBook.blade.php"><span class="overlay details"></span><img src="style/images/art/p5.jpg" alt="" /></a></div>
           <div class="box col5 cat2"><a href="style/images/art/p6.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p6.jpg" alt="" /></a></div>
           <div class="box col5 cat1"><a href="style/images/art/p7.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p7.jpg" alt="" /></a></div>
-          <div class="box col5 cat2"><a href="portfolio-post.html"><span class="overlay details"></span><img src="style/images/art/p8.jpg" alt="" /></a></div>
+          <div class="box col5 cat2"><a href="AboutBook.blade.php"><span class="overlay details"></span><img src="style/images/art/p8.jpg" alt="" /></a></div>
           <div class="box col5 cat2"><a href="style/images/art/p9.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p9.jpg" alt="" /></a></div>
           <div class="box col5 cat1"><a href="style/images/art/p10.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p10.jpg" alt="" /></a></div>
-          <div class="box col5 cat2"><a href="portfolio-post.html"><span class="overlay details"></span><img src="style/images/art/p11.jpg" alt="" /></a></div>
+          <div class="box col5 cat2"><a href="AboutBook.blade.php"><span class="overlay details"></span><img src="style/images/art/p11.jpg" alt="" /></a></div>
           <div class="box col5 cat1"><a href="style/images/art/p12.jpg" rel="prettyPhoto" title="this is title"><span class="overlay zoom"></span><img src="style/images/art/p12.jpg" alt="" /></a></div>
 		  <div class="box col5 cat3"><a href="http://vimeo.com/25518056" rel="prettyPhoto" title="this is title"><span class="overlay play"></span><img src="style/images/art/p13.jpg" alt="" /></a></div>
 		  <div class="box col5 cat3"><a href="http://vimeo.com/6757600" rel="prettyPhoto" title="this is title"><span class="overlay play"></span><img src="style/images/art/p14.jpg" alt="" /></a></div>
         </div>
-        <!-- .wrap --> 
+        <!-- .wrap -->
     </div>
     <!-- End Portfolio -->
-    
+
     <div class="clear"></div>
     <div id="footer">
       <div class="footer-top"></div>
@@ -302,18 +302,18 @@ $.fn.imagesLoaded = function(a) {
           </form>
           <div class="response"></div>
         </div>
-        <!-- End Form --> 
+        <!-- End Form -->
       </div>
       <div class="clear"></div>
     </div>
   </div>
   <!-- End Container -->
-  
+
   <div id="copyright" class="opacity">
     <p>© 2011 Zeences Design. All Right Reserved.</p>
   </div>
 </div>
-<!-- End Wrapper --> 
+<!-- End Wrapper -->
 
 
 

@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title> @yield('tittle')</title>
 <style>
+@font-face {
+	font-family: 'Andika'; 
+	src: url(/style/font/Andika/Andika-Regular.ttf); 
+}
+
   .temp1{
 	 height:300px;
    padding:10px;
@@ -13,8 +18,19 @@
 	border: 1px solid blue;
 
 }
+
 .flex{
   display:flex;
+  flex-wrap: wrap;
+
+}
+#menu1{
+  width:1020px
+}
+
+#wrappe {
+	width: 1020px;#e2e2e2;
+	margin: 0 auto;
 }
 .img1{
   width:150px;
@@ -22,6 +38,11 @@
   border: 1px solid blue;
   margin-bottom:20px;
 
+}
+h1, h2, h3, h4, h5, h6 {
+	color: #e2e2e2;
+	font-weight: normal;
+	padding-bottom: 12px;
 }
 </style>
 <!-- <link rel="stylesheet" type="text/css" href="/temp.css" media="all" /> -->
@@ -71,34 +92,34 @@ jQuery(document).ready(function($){
 <body>
 <!-- Fullscreen backgrounds -->
 <div id="thumbs">
-<a href="/style/images/art/bg1.jpg">1</a>
-<a href="/style/images/art/bg2.jpg">2</a>
-<a href="/style/images/art/bg3.jpg">3</a>
-<a href="/style/images/art/bg4.jpg">4</a>
-<a href="/style/images/art/bg5.jpg">5</a>
-<a href="/style/images/art/bg6.jpg">6</a>
+<a href="/style/images/book1.jpg">1</a>
+
 </div>
 <div id="superbgimage">
 	<div class="scanlines"></div>
 </div>
 <!-- End Fullscreen backgrounds -->
 <!-- Begin Wrapper -->
-<div id="wrapper">
+<div id="wrappe">
   <div id="header">
     <div class="logo opacity"><a href="index.html"><img src="/style/images/logo.png" alt="" /></a></div>
     <div class="social">
+      @if (Session::has('CurrentUser'))
+      <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login">{{!! (Session::get('CurrentUser'))[0]->name !!}} </a>
+      @else
       <ul>
-        <li><a href="/login"><img src="" alt="" />Войти</a></li>
-        <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li>
-       
+        <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
+        </li>
+        <!-- <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> -->
       </ul>
+    @endif
     </div>
   </div>
   <div class="clear"></div>
   <!-- Begin Menu -->
   <div id="menu" class="menu opacity">
     <ul>
-      <li><a href="index.html" class="active">Книги</a></li>
+      <li><a href="/" class="active">Книги</a></li>
 
       <li><a >Жанры</a>
       	<ul>
@@ -133,7 +154,7 @@ jQuery(document).ready(function($){
   <!-- End Menu --> 
   
 
-  <div class="">
+  <div >
    @yield('home')
   <div>  
 
