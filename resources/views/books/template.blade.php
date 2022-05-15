@@ -44,6 +44,9 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	padding-bottom: 12px;
 }
+li {
+    list-style-type: none; /* Убираем маркеры */
+   }
 </style>
 <!-- <link rel="stylesheet" type="text/css" href="/temp.css" media="all" /> -->
 <link rel="shortcut icon" type="image/x-icon" href="/style/images/favicon.png" />
@@ -105,20 +108,23 @@ jQuery(document).ready(function($){
     <div class="logo opacity"><a href="index.html"><img src="/style/images/logo.png" alt="" /></a></div>
     <div class="social">
 
-      <!-- @if (Session::has('CurrentUser'))
-      <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login">{{!! (Session::get('CurrentUser'))[0]->name !!}} </a>
-      @else
+      @if (Session::has('CurrentUser'))
       <ul>
-        <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
-        </li>
-         <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> 
+          <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login">{{ (Session::get('CurrentUser'))->first()->name }} </a>
+          <li><a href="/basket">Корзина</a></li>
       </ul>
-    @endif -->
+      @else
+          <ul>
+            <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
+            </li>
+            <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> 
+          </ul>
+      @endif
 
     <ul>
       <!-- <li><a href="/"> Корзина</a></li> -->
-        <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
-        </li>
+        <!-- <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
+        </li> -->
          <!-- <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> -->
 
       </ul>

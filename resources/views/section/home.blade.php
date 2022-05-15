@@ -9,7 +9,7 @@
 
 <div class='flex'>
     @foreach ($books_list as $i) 
-     <a href="{{ $i->id }} "  >
+     <a href="/book/{{ $i->id }} "  >
         <form method="get">
             <div class="temp1">
                  <div >

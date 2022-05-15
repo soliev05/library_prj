@@ -73,7 +73,40 @@
   div.inform > div > span{
     font-weight: bold;
   }
-
+  .comment {
+     background-color: #fff;
+     border: 1px solid #dedede;
+     width: 580px;
+     height: 140px;
+     resize: none;
+     color: #4d4d4d;
+     font-family: 'PTSansRegular';
+     font-size: 13px;
+     padding: 5px 10px;
+     -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+     border-radius: 5px;
+  }
+ .commentButton {
+   
+     color: #fff;
+     -webkit-transition: all 200ms ease-in;
+     font-family: 'PTSansRegular';
+     background:  url(style/images/button.png) repeat-x;
+     border: none;
+     width: 150px;
+     height: 35px;
+     font-family: 'PTSansRegular';
+     -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+     border-radius: 3px;
+     color: #e2e2e2;
+     font-size: 14px;
+     padding: 4px 20px 1px 20px;
+     cursor: pointer;
+     margin-left: auto;
+     background-color: #ab4d63;
+}
 </style>
 
 
@@ -124,8 +157,10 @@
 
                 @else 
                     <form action="/login" method='get' >
-                      <input type="submit" value='Войти'>
-                      <input type="hidden" name='redirect' value='{{ Request::url() }}'>
+                   
+                      <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                      <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
+                      <input type="submit" value='Добавить в Корзину'>
                     </form>
                 @endif
               </div>
@@ -147,61 +182,47 @@
 
 
       <!-- Begin Comments -->
-<div class='headerComm'>Отзывы</div>
-
+    <div class='headerComm'>Отзывы</div>
+    @foreach ($comment as $i)
+    
       <div id="comments">
         <ol id="singlecomments" class="commentlist">
           <li class= "clearfix">
             <div class="user"><img alt="" src="style/images/art/a1.jpg" height="60" width="60" class="avatar" /></div>
             <div class="message">
               <div class="info">
-                <h3><a href="#">Jacqueline</a></h3>
-                <span class="date">April 4, 2010</span> <a class="reply-link" href="#">Reply</a> </div>
-              <p>Quisque tristique tincidunt metus non aliquam. Quisque ac risus sit amet quam sollicitudin vestibulum vitae malesuada libero. Mauris magna elit, suscipit non ornare et, blandit a tellus. Pellentesque dignissim ornare elit, quis mattis eros sodales ac.</p>
-            </div>
-            <div class="clear"></div>
-
-          </li>
-          <li class= "clearfix">
-            <div class="user"><img alt="" src="style/images/art/a4.jpg" height="60" width="60" class="avatar" /></div>
-            <div class="message">
-              <div class="info">
-                <h3><a href="#">Isabel</a></h3>
-                <span class="date">April 4, 2010</span> <a class="reply-link" href="#">Reply</a> </div>
-              <p>Quisque tristique tincidunt metus non aliquam. Quisque ac risus sit amet quam sollicitudin vestibulum vitae malesuada libero. Mauris magna elit, suscipit non ornare et, blandit a tellus. Pellentesque dignissim ornare elit, quis mattis eros sodales ac.</p>
-            </div>
-            <div class="clear"></div>
-          </li>
-          <li class= "clearfix">
-            <div class="user"><img alt="" src="style/images/art/a5.jpg" height="60" width="60" class="avatar" /></div>
-            <div class="message">
-              <div class="info">
-                <h3><a href="#">Isabel</a></h3>
-                <span class="date">April 4, 2010</span> <a class="reply-link" href="#">Reply</a> </div>
-              <p>Quisque tristique tincidunt metus non aliquam. Quisque ac risus sit amet quam sollicitudin vestibulum vitae malesuada libero. Mauris magna elit, suscipit non ornare et, blandit a tellus. Pellentesque dignissim ornare elit, quis mattis eros sodales ac.</p>
+                <h3><a href="#">{{ $i['user_name'] }}</a></h3>
+                <span class="date"> {{ $i['created_at'] }}  </span> <a class="reply-link" href="#">Reply</a> </div>
+              <p>{{ $i['comment'] }}</p>
             </div>
             <div class="clear"></div>
           </li>
         </ol>
       </div>
-     </div>
+    @endforeach 
+    </div>
       <!-- End Comments -->
 
       <!-- Begin Form -->
       <div class="comment-form">
         <h3>Leave a Reply</h3>
         <div class="form-container">
-          <form class="forms" action="#" method="post">
+          <form  action="/book/{id}/comment" method="post">
+            @csrf
             <fieldset>
               <ol>
 
                 <li class="form-row text-area-row">
 
-                  <textarea name="message" class="text-area required"></textarea>
+                  <textarea name="message" class="comment"></textarea>
                 </li>
                
                 <li class="button-row">
-                  <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="btn-submit" />
+                <input type="hidden" name='user_name' value='{{ (Session::get("CurrentUser"))->first()->name }}'>
+                  <input type="hidden" name='user_id' value='{{ (Session::get("CurrentUser"))->first()->id }}'>
+                  <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                  <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
+                  <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />
                 </li>
               </ol>
             
@@ -218,3 +239,5 @@
     <!-- End Full Width -->
 
 @endsection
+
+

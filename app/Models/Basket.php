@@ -9,8 +9,6 @@ class Basket extends Model
 {
     use HasFactory;
 
-
-    
     protected $table = 'basket';
 
 }

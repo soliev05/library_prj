@@ -13,20 +13,29 @@ class BasketController extends Controller
     
     public function index()
     {
-        $booksListFromBasket =  Basket::select('book_id')->where('user_id',Session::get('CurrentUser')
-        ->first()->id)
-        ->pluck('book_id')->toArray();
+        $booksListFromBasket = Basket::select('book_id')
+                      ->where('user_id',Session::get('CurrentUser')
+                      ->first()->id)
+                      ->pluck('book_id')
+                      ->toArray();
 
-        $booksList = Books::whereIn('id',$booksListFromBasket )->get();
-        dd($booksList);
+        $booksList = Books::whereIn('id',$booksListFromBasket )->get()->toArray();
+      
+        return view('books.basket', ['book_list'=>$booksList]);
     }
 
     public function store(Request $request)
     {
-
-        if ($request->request->has('AddToBasket')){
-            $basket = Basket::where('user_id',Session::get('CurrentUser')->first()->id)
-                ->where('book_id', $request->request->get('book_id'))->first();
+        $basket = Basket::where('user_id',Session::get('CurrentUser')->first()->id)
+        ->where('book_id', $request->request->get('book_id'))->first();
+        // dd($basket);
+        
+        if (!$basket){
+            $basket = Basket::where('user_id',Session::get('CurrentUser')
+                ->first()
+                ->id)
+                ->where('book_id', $request->request->get('book_id'))
+                ->first();
 
             if (!$basket) {
                 $basket = new Basket();
@@ -36,14 +45,17 @@ class BasketController extends Controller
 
             $basket->save();
 
-        }elseif ($request->request->has('removeFromBasket')){
+        }elseif ($basket){
 
-            $basket = Basket::where('user_id',Session::get('CurrentUser')->first()->id)
-            ->where('book_id', $request->request->get('book_id'))->first();
-                if ($basket){
-                    $basket->delete();
-                   
-                }
+            $basket->delete();
+
+            // $basket = Basket::where('user_id',Session::get('CurrentUser')
+            //     ->first()
+            //     ->id)
+            //     ->where('book_id', $request->request->get('book_id'))
+            //     ->first();
+           
+            
            } 
         return redirect($request->request->get('redirect'));
     }

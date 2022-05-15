@@ -74,7 +74,7 @@ body {
   margin-top: 40px;
   letter-spacing: 4px;
 }
-/* 
+/*
 .login-box a:hover {
   background: #03e9f4;
   color: #fff;
@@ -126,7 +126,7 @@ box-sizing: border-box;
  -webkit-user-select: none;
    touch-action: manipulation;   width: auto;
    will-change: transform,opacity;
-   z-index: 0; 
+   z-index: 0;
 }
 
 </style>
@@ -147,28 +147,31 @@ box-sizing: border-box;
     </span>
 
 <div class="login-box">
-  <h2>𝐋𝐨𝐠𝐢𝐧</h2>
-  <form method = "post" >
-  @csrf
-
-    <div class="user-box">
-        <input type="email" name="email" required="">
-        <label>Email</label>
-    </div>
-        <div class="user-box">
-            <input type="password" name="password" required="">
-            <label>Пароль</label>
-        </div>
-    <div ><input class='submit' type="submit" name='submit'></div>
-    <a href="/registrate">
-     
-      Регистрация
-    </a>
-  </form>
+  <h2>Login</h2>
+    <form method = "post" >
+    @csrf
+      <div class="user-box">
+          <!-- <div>{{ $book_id->get('redirect') }}</div> -->
+          <input type="email" name="email" required="">
+          <label>Email</label>
+      </div>
+      <div class="user-box">
+          <input type="password" name="password" required="">
+          <label>Пароль</label>
+      </div>
+        @if ($book_id)
+            <input type="hidden" name='book_id' value='{{ $book_id->get("book_id") }}'>
+            <input type="hidden" name='redirect' value='{{ $book_id->get('redirect') }}'>
+        @endif
+      <div ><input class='submit' type="submit" name='submit'></div>
+      <a href="/registrate">
+        Регистрация
+      </a>
+    </form>
 </div>
 
 
-<!--  
+<!--
         <form action="" method = "post"><br>
         @csrf
         <p>Login<input type="text" name= "email" class="text-input required"></p><br><br>

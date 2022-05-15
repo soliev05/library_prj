@@ -6,6 +6,7 @@ use  App\Http\Controllers\Login;
 use  App\Http\Controllers\Registrate;
 use App\Http\Controllers\AboutBook;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,15 +90,21 @@ Route::get('/biografiya-memuari',function (){
 
 
 
-
+// ////////////корзина//////////////
 Route::get('/basket',[BasketController::class,'index']);
-
 Route::post('/basket',[BasketController::class,'store']);
 
+// ----------------------------------
 
-
+//////////////////AboutBook/////////
 Route::get('/book/{id}',[AboutBook::class,'getBook']);
 
+//----------------------------
+
+////////////Comment////////////
+Route::post('/book/{id}/comment',[CommentController::class, 'saveComment']);
+
+//----------------------------------
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
