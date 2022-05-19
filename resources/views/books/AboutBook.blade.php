@@ -106,6 +106,7 @@
      cursor: pointer;
      margin-left: auto;
      background-color: #ab4d63;
+     margin-top:10px;
 }
 </style>
 
@@ -121,24 +122,24 @@
 <div class="contBook">
     <div class="aboutCont ">
       <div class="imgBook flex">
-        <img  src="https://cv4.litres.ru/pub/c/elektronnaya-kniga/cover_415/67469040-mihail-fishman-preemnik-istoriya-borisa-nemcova-i-strany-v-kotoroy-on-ne-s.jpg" alt="">
+        <img  src="{{ Storage::url($books_id[0]->urlImage) }}" alt="">
         <!-- <img  src="https://cv8.litres.ru/pub/c/audiokniga/cover_330/67644287-ekaterina-vasina-tebe-povezlo-detka-67644287.jpg" alt=""> -->
       </div>
       <div class="permission">
         <div>
-          <div><span class='nameBook'>{{ $books_id->name }}</span></div>
+          <div><span class='nameBook'>{{ $books_id[0]->name }}</span></div>
           <div class="inform">
-              <div> <span>Автор:&nbsp;</span>{{ $books_id->author }}</div>
-              <div> <span>Жанр:&nbsp;</span>{{ $books_id->genre }}</div>
-              <div><span>Дата выхода на сайт:&nbsp;</span>{{ $books_id->year_publish}}</div>
-              <div> <span>Дата написания:&nbsp;</span>{{ $books_id->year_write }}</div>
-              <div><span>Объем:&nbsp;</span>{{ $books_id->count_page }}&nbsp;стр.</div>
+              <div> <span>Автор:&nbsp;</span>{{ $books_id[0]->author }}</div>
+              <div> <span>Жанр:&nbsp;</span>{{ $books_id[0]->genre }}</div>
+              <div><span>Дата выхода на сайт:&nbsp;</span>{{ $books_id[0]->year_publish}}</div>
+              <div> <span>Дата написания:&nbsp;</span>{{ $books_id[0]->year_write }}</div>
+              <div><span>Объем:&nbsp;</span>{{ $books_id[0]->count_page }}&nbsp;стр.</div>
 
               <div class="option">
                 @if ( Session::has('CurrentUser') )
                     @if ( $basket )
                       <form action="/basket" method='post' >
-                          <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                          <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
                           <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                           @csrf
                           <input type='submit' name='removeFromBasket' value='Удалить из корзины'>
@@ -147,7 +148,7 @@
                     @else
       
                       <form action="/basket" method='post' >
-                        <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                        <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
                         <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                         @csrf
                         <input type='submit' name='AddToBasket' value='Добавить в Корзину'>
@@ -158,7 +159,7 @@
                 @else 
                     <form action="/login" method='get' >
                    
-                      <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                      <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
                       <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
                       <input type="submit" value='Добавить в Корзину'>
                     </form>
@@ -167,17 +168,21 @@
 
 
               <div><button>Читать</button></div>
+              <a download="{{ $books_id[0]->name }}" href="{{ Storage::url($books_id[0]->urlFileBook) }}" title="321"><button>Сачать</button></a>
+              
+
+              
           </div>
         </div>
       </div>
 
     </div>
-    <div class="contAboutBook"><span>О книге:&nbsp;</span>{{ $books_id->discription }} </div>
+    <div class="contAboutBook"><span>О книге:&nbsp;</span>{{ $books_id[0]->discription }} </div>
 </div>
 
 
 <div class="contComment">
- <div class="line"></div>
+   <div class="line"></div>
 
 
 
@@ -205,30 +210,43 @@
 
       <!-- Begin Form -->
       <div class="comment-form">
-        <h3>Leave a Reply</h3>
+        <h3>Оставьте отзыв</h3>
         <div class="form-container">
+        @if ( Session::has('CurrentUser') )
           <form  action="/book/{id}/comment" method="post">
             @csrf
             <fieldset>
               <ol>
-
                 <li class="form-row text-area-row">
-
                   <textarea name="message" class="comment"></textarea>
                 </li>
-               
                 <li class="button-row">
-                <input type="hidden" name='user_name' value='{{ (Session::get("CurrentUser"))->first()->name }}'>
-                  <input type="hidden" name='user_id' value='{{ (Session::get("CurrentUser"))->first()->id }}'>
-                  <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                  <input type="hidden" name='user_name' value='{{ (Session::get("CurrentUser"))->first()->name }}'>
+                  <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
                   <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
-                  <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />
+                  <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />             
                 </li>
-              </ol>
-            
+              </ol>            
             </fieldset>
           </form>
-          <div class="response"></div>
+        @else
+        <form  action="/login" method="get">
+            @csrf
+            <fieldset>
+              <ol>
+                <li class="form-row text-area-row">
+                  <textarea name="message" class="comment"></textarea>
+                </li>
+                <li class="button-row">
+                  <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
+                  <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
+                  <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />             
+                </li>
+              </ol>            
+            </fieldset>
+          </form>
+        @endif
+          
         </div>
       </div>
       <!-- End Form -->

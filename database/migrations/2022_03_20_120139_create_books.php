@@ -18,11 +18,13 @@ class CreateBooks extends Migration
             $table->timestamps();
             $table->string('name',256);
             $table->string('author',64);
-            $table->string('genre',32);
+            $table->string('genre',64);
             $table->integer('year_publish');
             $table->integer('year_write');
             $table->string('discription',256);
             $table->integer('count_page');
+            $table->string('urlImage',256)->default();
+            $table->string('urlFileBook',256)->default();
         });
     }
 
@@ -34,5 +36,8 @@ class CreateBooks extends Migration
     public function down()
     {
         Schema::dropIfExists('books');
+        // Schema::table('books', function (Blueprint $table) {
+        //     $table->dropColumn('genre');
+        // });
     }
 }

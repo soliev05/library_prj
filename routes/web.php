@@ -7,7 +7,9 @@ use  App\Http\Controllers\Registrate;
 use App\Http\Controllers\AboutBook;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileExitController;
+use App\Http\Controllers\DownloadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,8 +89,15 @@ Route::get('/biografiya-memuari',function (){
 });
 
 
+////////////Profile////////////
+Route::get('/profile',[ProfileController::class, 'profile']);
 
+//----------------------------------
 
+////////////ProfileExit////////////
+Route::get('/exit',[ProfileExitController::class, 'exit']);
+
+//----------------------------------
 
 // ////////////корзина//////////////
 Route::get('/basket',[BasketController::class,'index']);
@@ -102,7 +111,13 @@ Route::get('/book/{id}',[AboutBook::class,'getBook']);
 //----------------------------
 
 ////////////Comment////////////
-Route::post('/book/{id}/comment',[CommentController::class, 'saveComment']);
+Route::post('/book/{id}/comment',[CommentController::class, 'addComment']);
+
+//----------------------------------
+
+
+////////////Download////////////
+Route::get('/book/{id}/download',[DownloadController::class, 'download']);
 
 //----------------------------------
 

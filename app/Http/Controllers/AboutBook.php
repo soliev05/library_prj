@@ -17,7 +17,7 @@ class AboutBook extends Controller
 
         if (Session::has('CurrentUser')) {       
             $basket = Basket::where('user_id',Session::get('CurrentUser')->first()->id)
-            ->where('book_id', $id)->first();
+            ->where('book_id', $id)->first(); 
 
                 return view('books.AboutBook', ['books_id'=>GetBook::book($id),'basket'=>$basket,
                 'comment'=>Comment::getComment($id)]);

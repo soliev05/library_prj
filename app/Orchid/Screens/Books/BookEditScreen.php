@@ -22,12 +22,23 @@ use Orchid\Support\Facades\Toast;
 use App\Orchid\Layouts\Book\BookEditLayout;
 use App\Models\Books;
 use App\Orchid\Screens\Books\BooksList;
+use Orchid\Attachment\Models\Attachment;
+use Orchid\Attachment\File;
 
 
 
+use App\Http\Requests\ClientRequest;
+use App\Models\Client;
+use App\Orchid\Filters\StatusFilter;
+use App\Orchid\Layouts\Client\ClientListTable;
+use App\Orchid\Layouts\CreateOrUpdateClient;
+use App\Orchid\Layouts\OperatorSelection;
+use App\View\Components\ProgressBoard;
+use Carbon\Carbon;
+use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Screen\Layouts\Selection;
 
-
-
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 
 class BookEditScreen extends Screen
@@ -44,13 +55,14 @@ class BookEditScreen extends Screen
      *
      * @return array
      */
-    public function query(User $user): iterable
+    public function query(User $user, Books $book): iterable
     {
         $user->load(['roles']);
-
+        $book->load('attachment');
         return [
             'user'       => $user,
             'permission' => $user->getStatusPermission(),
+            'book' =>$book
         ];
     }
 
@@ -116,7 +128,7 @@ class BookEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-//               dd($request);
+
             Layout::block(BookEditLayout::class)
                 ->title(__('Информация о книги'))
                 ->description(__(''))
@@ -174,6 +186,7 @@ class BookEditScreen extends Screen
         // $customer->email = $request->request->get('email');
         $arrayBook = $request->get('books');
 
+        // // dd($request->file('attachment'));
         $book-> name = $arrayBook['name'];
         $book-> author = $arrayBook['author'];
         $book-> genre = $arrayBook['genre'];
@@ -181,8 +194,55 @@ class BookEditScreen extends Screen
         $book-> year_write = $arrayBook['year_write'];
         $book-> discription = $arrayBook['discription'];
         $book-> count_page = $arrayBook['count_page'];
+        
+        // $item = Books::find(1);
+        // $item->attachment()->get();
+        // $image = $item->attachment()->first();
 
-        $book->save();
+        //Получить URL адрес файла
+        // $image->url();
+
+        $book->fill($request->get('books'))->save();
+
+        $book->attachment()->syncWithoutDetaching(
+            $request->input('books.attachment', [])
+        );
+        $book->attachment()->syncWithoutDetaching(
+            $request->input('books1.attachment', [])
+        );
+        // dd($book->attachment()->get()->first());
+       $attachments_id = $book->attachment()->get()->first()->id;
+
+        $db = pg_connect("host=db port=5432 dbname=app user=postgres password=root");
+
+        $imgBook_id = pg_query($db,"SELECT * FROM attachments WHERE id= '" . $attachments_id . "'; ");
+        $row = pg_fetch_array($imgBook_id);
+        $path = $row['path'];
+        $name = $row['name'];        ///получение адрес картинки книги
+        $extension = $row['extension'];
+        
+        $attachments_id = $attachments_id + 1; 
+        $fileBook_id = pg_query($db,"SELECT * FROM attachments WHERE id= '" . $attachments_id . "'; ");
+       
+        $rowFile = pg_fetch_array($fileBook_id);
+ 
+        $pathFile = $rowFile['path'];
+        $nameFile = $rowFile['name'];
+        $extensionFile = $rowFile['extension'];
+        
+        $url = $path . $name . '.' . $extension;
+        $urlFile = $pathFile . $nameFile . '.' . $extensionFile;
+    
+        
+        $book-> urlImage = $url;
+        $book-> urlFileBook = $urlFile ;
+// dd($book);
+
+
+
+
+        $book->save(); 
+      
         Toast::info(__('Книга успешно добавлено!'));
 
         return redirect()->route('platform.books');

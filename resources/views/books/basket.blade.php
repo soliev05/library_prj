@@ -13,7 +13,7 @@
      <a href="/book/{{ $i['id'] }} "  >
             <div class="temp1">
                  <div >
-                      <img class="img1" src="" alt="">
+                      <img class="img1" src="{{$i['urlImage']}}" alt="">
                  </div>
 
                  <div class="author">

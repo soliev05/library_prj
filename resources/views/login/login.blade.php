@@ -151,7 +151,7 @@ box-sizing: border-box;
     <form method = "post" >
     @csrf
       <div class="user-box">
-          <!-- <div>{{ $book_id->get('redirect') }}</div> -->
+          
           <input type="email" name="email" required="">
           <label>Email</label>
       </div>
@@ -161,8 +161,13 @@ box-sizing: border-box;
       </div>
         @if ($book_id)
             <input type="hidden" name='book_id' value='{{ $book_id->get("book_id") }}'>
-            <input type="hidden" name='redirect' value='{{ $book_id->get('redirect') }}'>
+            <input type="hidden" name='redirect' value='{{ $book_id->get("redirect") }}'>
         @endif
+        @if ($comment)
+            <input type="hidden" name='message' value='{{ $comment->get("message") }}'> 
+            <input type="hidden" name='book_id' value='{{ $comment->get("book_id") }}'>
+            <input type="hidden" name='redirect' value='{{ $comment->get("redirect") }}'>
+        @endif 
       <div ><input class='submit' type="submit" name='submit'></div>
       <a href="/registrate">
         Регистрация

@@ -12,26 +12,36 @@ class Login extends Controller
       public function login(Request $request){
 
             $book_id = $request->request;
-            if ($book_id){
-               // dd($book_id);
-                 return view('login.login', ['book_id'=>$book_id]);
+            $comment = $request->request;
+            
+            if ($comment->get('message')){
+               return view('login.login', ['comment'=>$comment, 'book_id'=>false]); 
+
+            }elseif ($book_id->get('book_id')){
+                  return view('login.login', ['book_id'=>$book_id,'comment'=>false ]);
             }else
-            return view('login.login');
+            return view('login.login', ['comment'=>false, 'book_id'=>false]);
       }
 
       public function getLogin(Request $request){
-
+         // dd($request->request);
         $user = Customer::where ('email',$request->request->get('email'))
         ->where('password',Customer::hashPassword($request->request->get('password')))
         ->get();
+
          $book_id = $request->request->get('book_id');
-
-            if ($user->count()==1 && $book_id){
-
-               Session::put('CurrentUser', $user);
-               return app()->call('App\Http\Controllers\BasketController@store', [$request]);
+         $comment = $request->request->get('message');
          
-               }elseif ($user->count()==1) {
+            if ($user->count()==1 && $comment){
+                  Session::put('CurrentUser', $user);
+                  return app()->call('App\Http\Controllers\CommentController@saveComment', [$request]);
+               
+               }
+               elseif ($user->count()==1 && $book_id) {
+                  Session::put('CurrentUser', $user);
+                  return app()->call('App\Http\Controllers\BasketController@store', [$request]);
+               }
+               elseif ($user->count()==1) {
                   Session::put('CurrentUser', $user);
                   return redirect ('/');
                }else
