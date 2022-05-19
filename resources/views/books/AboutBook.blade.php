@@ -122,18 +122,18 @@
 <div class="contBook">
     <div class="aboutCont ">
       <div class="imgBook flex">
-        <img  src="{{ Storage::url($books_id[0]->urlImage) }}" alt="">
+        <img  src="{{ Storage::url($books_id->urlImage) }}" alt="">
         <!-- <img  src="https://cv8.litres.ru/pub/c/audiokniga/cover_330/67644287-ekaterina-vasina-tebe-povezlo-detka-67644287.jpg" alt=""> -->
       </div>
       <div class="permission">
         <div>
-          <div><span class='nameBook'>{{ $books_id[0]->name }}</span></div>
+          <div><span class='nameBook'>{{ $books_id->name }}</span></div>
           <div class="inform">
-              <div> <span>Автор:&nbsp;</span>{{ $books_id[0]->author }}</div>
-              <div> <span>Жанр:&nbsp;</span>{{ $books_id[0]->genre }}</div>
-              <div><span>Дата выхода на сайт:&nbsp;</span>{{ $books_id[0]->year_publish}}</div>
-              <div> <span>Дата написания:&nbsp;</span>{{ $books_id[0]->year_write }}</div>
-              <div><span>Объем:&nbsp;</span>{{ $books_id[0]->count_page }}&nbsp;стр.</div>
+              <div> <span>Автор:&nbsp;</span>{{ $books_id->author }}</div>
+              <div> <span>Жанр:&nbsp;</span>{{ $books_id->genre }}</div>
+              <div><span>Дата выхода на сайт:&nbsp;</span>{{ $books_id->year_publish}}</div>
+              <div> <span>Дата написания:&nbsp;</span>{{ $books_id->year_write }}</div>
+              <div><span>Объем:&nbsp;</span>{{ $books_id->count_page }}&nbsp;стр.</div>
 
               <div class="option">
                 @if ( Session::has('CurrentUser') )
@@ -148,7 +148,7 @@
                     @else
       
                       <form action="/basket" method='post' >
-                        <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
+                        <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                         <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                         @csrf
                         <input type='submit' name='AddToBasket' value='Добавить в Корзину'>
@@ -159,7 +159,7 @@
                 @else 
                     <form action="/login" method='get' >
                    
-                      <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
+                      <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                       <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
                       <input type="submit" value='Добавить в Корзину'>
                     </form>
@@ -168,7 +168,7 @@
 
 
               <div><button>Читать</button></div>
-              <a download="{{ $books_id[0]->name }}" href="{{ Storage::url($books_id[0]->urlFileBook) }}" title="321"><button>Сачать</button></a>
+              <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321"><button>Сачать</button></a>
               
 
               
@@ -177,7 +177,7 @@
       </div>
 
     </div>
-    <div class="contAboutBook"><span>О книге:&nbsp;</span>{{ $books_id[0]->discription }} </div>
+    <div class="contAboutBook"><span>О книге:&nbsp;</span>{{ $books_id->discription }} </div>
 </div>
 
 
@@ -222,7 +222,7 @@
                 </li>
                 <li class="button-row">
                   <input type="hidden" name='user_name' value='{{ (Session::get("CurrentUser"))->first()->name }}'>
-                  <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
+                  <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                   <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
                   <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />             
                 </li>
@@ -238,7 +238,7 @@
                   <textarea name="message" class="comment"></textarea>
                 </li>
                 <li class="button-row">
-                  <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
+                  <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                   <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
                   <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />             
                 </li>
