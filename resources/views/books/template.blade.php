@@ -15,8 +15,9 @@
 	 height:300px;
    padding:10px;
    margin :15px;
-	border: 1px solid blue;
-
+	 /* border: 1px solid blue; */
+   background: #4d87ab69;
+   border-radius:5px;
 }
 
 .flex{
@@ -47,7 +48,50 @@ h1, h2, h3, h4, h5, h6 {
 li {
     list-style-type: none; /* Убираем маркеры */
    }
-</style>
+
+.imgLogo{
+    width:400px;
+   
+  }
+  .fontText{
+    font-family: 'PTSansRegular';
+  }
+  .logRegistrText{
+    font-size:20px;
+    color:#0f2645;
+    margin-right:10px;
+  }
+  ul > li{
+    font-family: 'PTSansRegular';
+    font-size:15px;
+  }
+  #backgColor{
+    background-color: #bad8e35e;
+  }
+  .temp1:hover{
+    box-shadow: 0 0 8px 0px #1b1b2f;
+  }
+  .bookName{
+    color:#e2e2e2;
+    width:140px;
+    height:40px;
+        font-size: 18px;
+        line-height: 20px;
+    font-weight: 500;
+    font-style: normal;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+    -webkit-transition-property: color;
+    -o-transition-property: color;
+    transition-property: color;
+}
+  }
+</style> 
+
+@yield('searchCss')
 <!-- <link rel="stylesheet" type="text/css" href="/temp.css" media="all" /> -->
 <link rel="shortcut icon" type="image/x-icon" href="/style/images/favicon.png" />
 <link rel="stylesheet" type="text/css" href="/style.css" media="all" />
@@ -105,19 +149,19 @@ jQuery(document).ready(function($){
 <!-- Begin Wrapper -->
 <div id="wrappe">
   <div id="header">
-    <div class="logo opacity"><a href="index.html"><img src="/style/images/logo.png" alt="" /></a></div>
+    <div class="logo opacity"><a  href="/"><img class='imgLogo' src="/style/images/elKitob.png" alt="" /></a></div>
     <div class="social">
 
       @if (Session::has('CurrentUser'))
       <ul>
-          <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/profile">{{ (Session::get('CurrentUser'))->first()->name }} </a>
-          <li><a href="/basket">Корзина</a></li>
+          <li><a class='logRegistrText fontText' href="/profile">{{ (Session::get('CurrentUser'))->first()->name }} </a>
+          <li><a class='logRegistrText fontText' href="/basket">Корзина</a></li>
       </ul>
       @else
           <ul>
-            <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
-            </li>
-            <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> 
+            <li><a  class='logRegistrText fontText's href="/login"><img src="" alt="" />Войти </a></li>
+            <li>|&nbsp;&nbsp;</li>
+            <li><a class='logRegistrText fontText' href="/registrate"><img  src="" alt="" />Регистрация</a></li> 
           </ul>
       @endif
 
@@ -137,8 +181,8 @@ jQuery(document).ready(function($){
       <li><a href="/" class="active">Книги</a></li>
 
       <li><a >Жанры</a>
-      	<ul>
-      	<li><a href="/sport-zdorove">Спорт, здоровье, красота</a></li>
+      	<ul class='fontText'>
+      	<li><a  href="/sport-zdorove">Спорт, здоровье, красота</a></li>
       	<li><a href="/hobbi">Хобби, досуг</a></li>
       	<li><a href="/roditelyam">Родителям</a></li>
         <li><a href="/istoriya">История</a></li>
@@ -149,7 +193,7 @@ jQuery(document).ready(function($){
         
       	</ul>
       </li>
-      <li><a href="portfolio.html">Популярное</a>
+      <li><a class='fontText' href="portfolio.html">Популярное</a>
         
       </li>
 
@@ -167,9 +211,11 @@ jQuery(document).ready(function($){
     <br style="clear: left" />
   </div>
   <!-- End Menu --> 
-  
 
-  <div >
+  
+ 
+  <div > 
+   @yield('search')
    @yield('home')
   <div>  
 

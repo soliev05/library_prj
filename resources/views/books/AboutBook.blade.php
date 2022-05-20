@@ -58,6 +58,7 @@
   }
  div.imgBook > img{
     max-width:380px;
+    height: fit-content;
   }
   .contAboutBook{
     /* font-family: 'PTSansRegular'; */
@@ -139,7 +140,7 @@
                 @if ( Session::has('CurrentUser') )
                     @if ( $basket )
                       <form action="/basket" method='post' >
-                          <input type="hidden" name='book_id' value='{{ $books_id[0]->id }}'>
+                          <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                           <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                           @csrf
                           <input type='submit' name='removeFromBasket' value='Удалить из корзины'>

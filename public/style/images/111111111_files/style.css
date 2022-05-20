@@ -107,7 +107,7 @@ p {
 	line-height: 20px;
 }
 a {
-	color: #4d87ab;
+	color: #e2e2e2;
 	text-decoration: none;
 	-webkit-transition:all 200ms ease-in;
 	-moz-transition:all 200ms ease-in;
@@ -154,7 +154,7 @@ ul {
 	font-size: 14px;
 }
 ul li {
-	background: transparent url(style/images/bullet.png) center left no-repeat;
+	
 	padding-left: 15px;
 }
 ol {
@@ -216,7 +216,7 @@ img.right {
 	margin: 10px 0 5px 10px;
 }
 .lite1 {
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 .lite2 {
 	border-bottom: 1px dotted #4d87ab;
@@ -286,7 +286,7 @@ a.button.lime:hover {
 
 a.button.red:hover {
 	color: #fff;
-	background-color: #4d87ab;
+	background-color: #e2e2e2;
 }
 
 a.button.purple:hover {
@@ -522,15 +522,15 @@ ul.flickr li img {
 	color: #4d4d4d;
 }
 .menu ul li a.active {
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 .menu ul li a.selected {
 	background: #fff;
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 .menu ul li a:hover {
 	background: #fff;
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 .menu ul li ul {
 	position: absolute;
@@ -1580,10 +1580,10 @@ h2.trigger {
 	border-radius: 5px;
 }
 h2.trigger.active {
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 h2.trigger:hover {
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 .togglebox {
 	width:590px;
@@ -1662,12 +1662,12 @@ ul.tabs li a {
 }
 ul.tabs li a:hover {
 	text-decoration: none;
-	color: #4d87ab;
+	color: #e2e2e2;
 }
 ul.tabs li.active a {
 	border: 1px solid #4d87ab;
 	color: #fff;
-	background-color: #4d87ab;
+	background-color: #e2e2e2;
 }
 .tab_container {
 	border-top: none;

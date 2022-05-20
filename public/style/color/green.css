@@ -1,9 +1,7 @@
 a {
 	color: #4dab96;
 }
-a:hover {
-	color: #ab4d63;
-}
+
 h1, h2, h3, h4, h5, h6 {
 	color: #4dab96;
 }
@@ -24,9 +22,7 @@ a.button:hover {
 	color: #fff;
 	background-color: #ab4d63;
 }
-ul.latest-posts li a:hover {
-	color: #ab4d63;
-}
+
 .menu ul li a.active {
 	color: #4dab96;
 }
@@ -46,18 +42,10 @@ ul.latest-posts li a:hover {
 .forms fieldset .btn-submit:hover, #footer .forms fieldset .btn-submit:hover {
 	background-color: #ab4d63;
 }
-#filtering-nav li.active a {
-	color: #ab4d63;
-}
-.post-meta a:hover, .tags a:hover {
-	color: #ab4d63;
-}
-.tag-list ul li a:hover {
-	color: #ab4d63;
-}
-.cat-list ul li a:hover {
-	color: #ab4d63;
-}
+
+
+
+
 h2.trigger.active {
 	color: #4dab96;
 }

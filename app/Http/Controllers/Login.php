@@ -34,7 +34,7 @@ class Login extends Controller
          
             if ($user->count()==1 && $comment){
                   Session::put('CurrentUser', $user);
-                  return app()->call('App\Http\Controllers\CommentController@saveComment', [$request]);
+                  return app()->call('App\Http\Controllers\CommentController@addComment', [$request]);
                
                }
                elseif ($user->count()==1 && $book_id) {

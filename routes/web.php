@@ -2,14 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Books;
-use  App\Http\Controllers\Login;
-use  App\Http\Controllers\Registrate;
+use App\Http\Controllers\Login;
+use App\Http\Controllers\Registrate;
 use App\Http\Controllers\AboutBook;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileExitController;
 use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\HomeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,14 +24,14 @@ use App\Http\Controllers\DownloadController;
 |
 */
 
-Route::get('/', function () {
-    return view('section.home', ['books_list'=> Books::all()]);
-});
+Route::get('/',[HomeController::class, 'home']);
+Route::get('/search',[HomeController::class, 'search']);
 
 
-//Route::get('/{id}', function ($id) {
-//    return view('books.AboutBook', ['books_id' =>new AboutBook()]);
-//});
+
+// Route::get('/', function () {
+//    return view('books.index4');
+// });
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -46,9 +49,9 @@ Route::get('/login', [Login::class,'login']);
 
 
 
-Route::get('/books',function (){
-    return view ('books.template', ['books_list'=> Books::all()]);
-});
+// Route::get('/books',function (){
+//     return view ('books.template', ['books_list'=> Books::all()]);
+// });
 
 Route::get('/biznes-knigi',function (){
     return view ('books.biznes');

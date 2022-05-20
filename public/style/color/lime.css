@@ -1,9 +1,7 @@
 a {
 	color: #92ab4d;
 }
-a:hover {
-	color: #ab4d63;
-}
+
 h1, h2, h3, h4, h5, h6 {
 	color: #92ab4d;
 }
@@ -20,13 +18,7 @@ a.button {
 	-o-transition:all 200ms ease-in;
 	-moz-transition:all 200ms ease-in;
 }
-a.button:hover {
-	color: #fff;
-	background-color: #ab4d63;
-}
-ul.latest-posts li a:hover {
-	color: #ab4d63;
-}
+
 .menu ul li a.active {
 	color: #92ab4d;
 }
@@ -43,21 +35,9 @@ ul.latest-posts li a:hover {
 	-o-transition:all 200ms ease-in;
 	-moz-transition:all 200ms ease-in;
 }
-.forms fieldset .btn-submit:hover, #footer .forms fieldset .btn-submit:hover {
-	background-color: #ab4d63;
-}
-#filtering-nav li.active a {
-	color: #ab4d63;
-}
-.post-meta a:hover, .tags a:hover {
-	color: #ab4d63;
-}
-.tag-list ul li a:hover {
-	color: #ab4d63;
-}
-.cat-list ul li a:hover {
-	color: #ab4d63;
-}
+
+
+
 h2.trigger.active {
 	color: #92ab4d;
 }
