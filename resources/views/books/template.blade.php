@@ -149,7 +149,7 @@ jQuery(document).ready(function($){
 <!-- Begin Wrapper -->
 <div id="wrappe">
   <div id="header">
-    <div class="logo opacity"><a  href="/"><img class='imgLogo' src="/style/images/elKitob.png" alt="" /></a></div>
+    <div class="logo opacity"><a  href="/"></a></div>
     <div class="social">
 
       @if (Session::has('CurrentUser'))
