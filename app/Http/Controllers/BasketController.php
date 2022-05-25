@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Basket;
 use App\Models\Books;
+use App\Models\Popular;
 use Illuminate\Support\Facades\Session;
 
 
@@ -20,8 +21,9 @@ class BasketController extends Controller
                       ->toArray();
 
         $booksList = Books::whereIn('id',$booksListFromBasket )->get()->toArray();
-      
-        return view('books.basket', ['book_list'=>$booksList]);
+  
+        $length = count($booksList);
+        return view('books.basket', ['book_list'=>$booksList,'length'=>$length]);
     }
 
     public function store(Request $request)
@@ -39,23 +41,20 @@ class BasketController extends Controller
 
             if (!$basket) {
                 $basket = new Basket();
+                $addBookToPopular = new Popular();
             }
             $basket->user_id = Session::get('CurrentUser')->first()->id;
             $basket->book_id = $request->request->get('book_id');
+            $addBookToPopular->book_id = $request->request->get('book_id');
 
+            $addBookToPopular->save();
             $basket->save();
 
         }elseif ($basket){
 
             $basket->delete();
 
-            // $basket = Basket::where('user_id',Session::get('CurrentUser')
-            //     ->first()
-            //     ->id)
-            //     ->where('book_id', $request->request->get('book_id'))
-            //     ->first();
-           
-            
+        
            } 
         return redirect($request->request->get('redirect'));
     }

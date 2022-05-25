@@ -76,7 +76,7 @@ html {
 .form {
     margin:50px 0px 30px 0px;
   position: relative;
-  width: 30rem;
+  
   background: var(--color-brand);
   border-radius: var(--rad);
 }
@@ -150,4 +150,49 @@ label {
 }
 /* END SEARCH */
 </style>
+@endsection
+
+@section('line')
+<div class="line"></div>
+
+@endsection
+
+@section('footer')
+
+<div id="footer">
+      <div class="footer-top"></div>
+      <!-- Divider -->
+      <div class="one-fourth">
+        <h3>Latest Posts</h3>
+        <ul class="latest-posts">
+          <li><span class="date"><em class="day">22</em><em class="month">Jun</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
+          <li><span class="date"><em class="day">14</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
+          <li><span class="date"><em class="day">11</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
+          <li><span class="date"><em class="day">08</em><em class="month">Apr</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
+        </ul>
+      </div>
+      
+      <div class="one-fourth">
+        <h3>Twitter</h3>
+        <div id="twitter-wrapper">
+          <div id="twitter"></div>
+          <span class="username"><a href="http://twitter.com/elemisdesign">→ Follow @elemisdesign</a></span> </div>
+      </div>
+      <div class="one-fourth last">
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <!-- End Container -->
+<!--   
+  <div id="copyright" class="opacity">
+   
+  </div> -->
+
+<!-- End Wrapper --> 
+
+<script type="text/javascript" src="/style/js/scripts.js"></script>
+</body>
+</html>
 @endsection

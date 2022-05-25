@@ -105,9 +105,64 @@
      font-size: 14px;
      padding: 4px 20px 1px 20px;
      cursor: pointer;
-     margin-left: auto;
+     margin-left: 70px;
      background-color: #ab4d63;
      margin-top:10px;
+}
+.user > img{
+  border-radius:50%;
+}
+
+/* media 300px */
+@media  (max-width: 400px){
+  .aboutCont{
+    flex-direction: column;
+  }
+  div.imgBook > img {
+    /* margin-left: -200px; */
+
+}
+.nameBook {
+
+font-size: x-large;
+margin-bottom: 20px;
+width: 470px;
+
+}
+div.inform > div {
+
+margin-bottom: 25px;
+font-size: initial;
+font-weight: 500;
+
+}
+.form-container {
+
+position: relative;
+width: 200px;
+margin-left:1px;
+
+}
+.imgBook {
+
+width: 195px;
+height: auto;
+justify-content: center;
+
+padding: 30px 0px 30px 30px;
+
+}
+#formPadding{
+  margin-left:0px;
+  width:200px;
+}
+.comment{
+  width:300px;
+}
+#avatar{
+  width: 25px;
+ height: 25px;
+}
 }
 </style>
 
@@ -119,7 +174,7 @@
 @endsection
 
 @section('home')
-
+<div class="line"></div>
 <div class="contBook">
     <div class="aboutCont ">
       <div class="imgBook flex">
@@ -167,11 +222,31 @@
                 @endif
               </div>
 
+              @if ( Session::has('CurrentUser') )
+                 
+              @else
+                   <form action="/login" method='get' >
+                      <div>
+                        <a href="{{ Storage::url($books_id->urlFileBook) }}"> <button>Читать</button></a>
+                      </div>
+                      <input type="hidden" name='read' value='read'>
+                      <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
+                   
+                  </form>
+              @endif
+             
 
-              <div><button>Читать</button></div>
-              <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321"><button>Сачать</button></a>
-              
-
+              <form action="/book/{id}/download" method='get'>
+                <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="Сачать">
+                      <button>Сачать</button>
+                  </a>
+                  <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
+                  <input type="hidden" name='redirect' value='{{ Request::url() }}'>
+                  
+              </form>
+              <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321">
+                      <button>Сачать</button>
+                  </a>
               
           </div>
         </div>
@@ -189,16 +264,17 @@
 
       <!-- Begin Comments -->
     <div class='headerComm'>Отзывы</div>
+    
     @foreach ($comment as $i)
     
       <div id="comments">
         <ol id="singlecomments" class="commentlist">
           <li class= "clearfix">
-            <div class="user"><img alt="" src="style/images/art/a1.jpg" height="60" width="60" class="avatar" /></div>
+            <div class="user"><img alt="" src="https://avatars.mds.yandex.net/i?id=4b8d5006cc828cbe5c0d475e6ea7c7ab-5877601-images-thumbs&n=13&exp=1" height="60" width="60" class="avatar" /></div>
             <div class="message">
               <div class="info">
-                <h3><a href="#">{{ $i['user_name'] }}</a></h3>
-                <span class="date"> {{ $i['created_at'] }}  </span> <a class="reply-link" href="#">Reply</a> </div>
+                <h3><a href="">{{ $i['user_name'] }}</a></h3>
+                <span class="date"> {{ $i['created_at'] }}  </span> <a class="reply-link" href="">Ответить</a> </div>
               <p>{{ $i['comment'] }}</p>
             </div>
             <div class="clear"></div>
@@ -206,17 +282,19 @@
         </ol>
       </div>
     @endforeach 
+    {{ $comment->onEachSide(2)->links() }}
     </div>
       <!-- End Comments -->
 
       <!-- Begin Form -->
       <div class="comment-form">
         <h3>Оставьте отзыв</h3>
-        <div class="form-container">
+        <div class="form-container" id='formPadding'>
         @if ( Session::has('CurrentUser') )
           <form  action="/book/{id}/comment" method="post">
             @csrf
-            <fieldset>
+            
+            <div class="user"><img alt="" src="https://avatars.mds.yandex.net/i?id=4b8d5006cc828cbe5c0d475e6ea7c7ab-5877601-images-thumbs&n=13&exp=1" height="60" width="60" class="avatar" style='margin-right:10px;' /> </div>
               <ol>
                 <li class="form-row text-area-row">
                   <textarea name="message" class="comment"></textarea>
@@ -228,12 +306,13 @@
                   <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />             
                 </li>
               </ol>            
-            </fieldset>
+           
           </form>
         @else
         <form  action="/login" method="get">
             @csrf
-            <fieldset>
+            
+            <div class="user"><img alt="" src="https://avatars.mds.yandex.net/i?id=4b8d5006cc828cbe5c0d475e6ea7c7ab-5877601-images-thumbs&n=13&exp=1" height="60" width="60" class="avatar" /></div>
               <ol>
                 <li class="form-row text-area-row">
                   <textarea name="message" class="comment"></textarea>
@@ -244,7 +323,7 @@
                   <input type="submit" value="ОПУБЛИКОВАТЬ" name="submit" class="commentButton" />             
                 </li>
               </ol>            
-            </fieldset>
+            
           </form>
         @endif
           

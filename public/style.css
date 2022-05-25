@@ -501,7 +501,7 @@ ul.flickr li img {
 	display: inline;
 	float: left;
 	padding: 0;
-	background: none;
+	background: white;
 }
 .menu ul li a {
 	display: block;
@@ -1779,7 +1779,7 @@ table span.cross {
 	display: inline-block;
 	text-align: center;
 }
-.scanlines {
+/* .scanlines {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -1787,7 +1787,7 @@ table span.cross {
 	height: 100%;
 	z-index: 2;
 	background: url('style/images/tile.png');
-}
+} */
 /*-----------------------------------------------------------------------------------*/
 /* COMMENTS
 /*-----------------------------------------------------------------------------------*/

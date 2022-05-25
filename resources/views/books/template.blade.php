@@ -16,7 +16,7 @@
    padding:10px;
    margin :15px;
 	 /* border: 1px solid blue; */
-   background: #4d87ab69;
+   background:#2f2f2f33;
    border-radius:5px;
 }
 
@@ -30,7 +30,7 @@
 }
 
 #wrappe {
-	width: 1020px;#e2e2e2;
+	width: 1020px;
 	margin: 0 auto;
 }
 .img1{
@@ -65,9 +65,9 @@ li {
     font-family: 'PTSansRegular';
     font-size:15px;
   }
-  #backgColor{
+  /* #backgColor{
     background-color: #bad8e35e;
-  }
+  } */
   .temp1:hover{
     box-shadow: 0 0 8px 0px #1b1b2f;
   }
@@ -88,7 +88,52 @@ li {
     -o-transition-property: color;
     transition-property: color;
 }
+.line{
+    border-top: 3px solid #454545;
+    height: 8px;
+    width:100%;
+    border-bottom: 1px solid #454545;
+    margin: 20px 0 36px 0;
+    
   }
+  
+
+/* media */
+@media  (max-width: 400px)  {
+ 
+  #wrappe{
+    width:300px;
+  }
+  .temp1{
+    width:280px;
+    height:500px;
+
+  }
+  .img1{
+    width: 260px;
+    height: 400px;
+
+  }
+  
+  .ulList{
+    display: inline-grid;
+  }
+  #menu{
+      width:300px; 
+      text-align: center;
+  }
+  .imgLogo {
+  width: 190px;
+}
+.slesh{
+  display:none;
+}
+.logRegistrText{
+  font-size:14px;
+}
+}
+
+
 </style> 
 
 @yield('searchCss')
@@ -101,6 +146,7 @@ li {
 <link rel="stylesheet" type="text/css" href="/style/type/museo.css" media="all" />
 <link rel="stylesheet" type="text/css" href="/style/type/ptsans.css" media="all" />
 <link rel="stylesheet" type="text/css" href="/style/type/charis.css" media="all" />
+
 <!--[if IE 7]>
 <link rel="stylesheet" type="text/css" href="/style/css/ie7.css" media="all" />
 <![endif]-->
@@ -143,42 +189,39 @@ jQuery(document).ready(function($){
 
 </div>
 <div id="superbgimage">
-	<div class="scanlines"></div>
+
 </div>
 <!-- End Fullscreen backgrounds -->
 <!-- Begin Wrapper -->
 <div id="wrappe">
   <div id="header">
-    <div class="logo opacity"><a  href="/"></a></div>
+    <div class="logo opacity"><a  href="/"> <img class="imgLogo" src="/style/images/elKitob.png" alt=""> </a></div>
     <div class="social">
-
+      <ul class='ulList'>
       @if (Session::has('CurrentUser'))
-      <ul>
-          <li><a class='logRegistrText fontText' href="/profile">{{ (Session::get('CurrentUser'))->first()->name }} </a>
-          <li><a class='logRegistrText fontText' href="/basket">Корзина</a></li>
-      </ul>
+          
+            <li><img alt="" src="https://avatars.mds.yandex.net/i?id=4b8d5006cc828cbe5c0d475e6ea7c7ab-5877601-images-thumbs&n=13&exp=1" height="60" width="60" class="avatar" />
+            </li> 
+            <li><a class='logRegistrText fontText' href="/profile">{{ (Session::get('CurrentUser'))->first()->name }} </a>
+            </li>
+
+            <li><a class='logRegistrText fontText' href="/basket">Корзина</a></li>
+          
       @else
-          <ul>
-            <li><a  class='logRegistrText fontText's href="/login"><img src="" alt="" />Войти </a></li>
-            <li>|&nbsp;&nbsp;</li>
-            <li><a class='logRegistrText fontText' href="/registrate"><img  src="" alt="" />Регистрация</a></li> 
-          </ul>
+         
+            <li class='textSize'><a  class='logRegistrText fontText's href="/login">Войти </a></li>
+            <li class='slesh'>|&nbsp;&nbsp;</li>
+            <li class='textSize'  ><a class='logRegistrText fontText' href="/registrate">Регистрация</a></li> 
+          
       @endif
 
-    <ul>
-      <!-- <li><a href="/"> Корзина</a></li> -->
-        <!-- <li><a style="font-size:30px;font-family: 'PTSansRegular';" href="/login"><img src="" alt="" />Войти </a>
-        </li> -->
-         <!-- <li><a href="/registrate"><img src="" alt="" />Регистрация</a></li> -->
-
-      </ul>
     </div>
   </div>
   <div class="clear"></div>
   <!-- Begin Menu -->
   <div id="menu" class="menu opacity">
-    <ul>
-      <li><a href="/" class="active">Книги</a></li>
+    <ul class='ulList'>
+      <li><a href="/" class="active" style=' background: white;'>Книги</a></li>
 
       <li><a >Жанры</a>
       	<ul class='fontText'>
@@ -206,7 +249,7 @@ jQuery(document).ready(function($){
       <li><a href="button-boxes-images.html">О библиотеке</a>
       
       </li>
-      <li><a href="contact.html">Контакты</a></li>
+      <li><a href="/contact">Контакты</a></li>
     </ul>
     <br style="clear: left" />
   </div>
@@ -216,60 +259,9 @@ jQuery(document).ready(function($){
  
   <div > 
    @yield('search')
+   @yield('line')
    @yield('home')
   <div>  
 
 
-    
-    <div id="footer">
-      <div class="footer-top"></div>
-      <!-- Divider -->
-      <div class="one-fourth">
-        <h3>Latest Posts</h3>
-        <ul class="latest-posts">
-          <li><span class="date"><em class="day">22</em><em class="month">Jun</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-          <li><span class="date"><em class="day">14</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-          <li><span class="date"><em class="day">11</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-          <li><span class="date"><em class="day">08</em><em class="month">Apr</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-        </ul>
-      </div>
-      <div class="one-fourth">
-        <h3>Flickr</h3>
-        <ul class="flickr">
-          <li><a href="#"><img src="/style/images/art/f1.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f2.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f3.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f4.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f5.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f6.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f7.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f8.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="/style/images/art/f9.jpg" alt="" /></a></li>
-        </ul>
-      </div>
-      <div class="one-fourth">
-        <h3>Twitter</h3>
-        <div id="twitter-wrapper">
-          <div id="twitter"></div>
-          <span class="username"><a href="http://twitter.com/elemisdesign">→ Follow @elemisdesign</a></span> </div>
-      </div>
-      <div class="one-fourth last">
-        <h3>Get in Touch</h3>
-        <!-- Form -->
-        
-        <!-- End Form --> 
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <!-- End Container -->
-  
-  <div id="copyright" class="opacity">
-   
-  </div>
-</div>
-<!-- End Wrapper --> 
-
-<script type="text/javascript" src="/style/js/scripts.js"></script>
-</body>
-</html>
+    @yield('footer')

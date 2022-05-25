@@ -15,12 +15,49 @@ class Login extends Controller
             $comment = $request->request;
             
             if ($comment->get('message')){
-               return view('login.login', ['comment'=>$comment, 'book_id'=>false]); 
+               return view('login.login', [
+                  'comment'=>$comment, 
+                  'read'=>false,
+                  'download'=>false,
+                  'book_id'=>false
+               ]); 
 
             }elseif ($book_id->get('book_id')){
-                  return view('login.login', ['book_id'=>$book_id,'comment'=>false ]);
-            }else
-            return view('login.login', ['comment'=>false, 'book_id'=>false]);
+                  return view('login.login', [
+
+                     'book_id'=>$book_id,
+                     'read'=>false,
+                     'download'=>false,
+                     'comment'=>false 
+                  ]);
+            }
+            elseif ($book_id->get('read')){
+               // dd($book_id);
+               return view('login.login', [
+                  'read'=>$book_id,
+                  'comment'=>false, 
+                  'book_id'=>false ,
+                  'download'=>false,
+               ]);
+         }
+            elseif ($book_id->get('download')){
+
+               return view('login.login', [
+                  'download'=>$book_id,
+                  'comment'=>false,
+                  'read'=>false,
+                  'book_id'=>false 
+
+               ]);
+         }
+            else
+
+            return view('login.login', [
+            'comment'=>false, 
+            'book_id'=>false,
+            'download'=>false,
+            'read'=>false
+         ]);
       }
 
       public function getLogin(Request $request){
@@ -44,7 +81,12 @@ class Login extends Controller
                elseif ($user->count()==1) {
                   Session::put('CurrentUser', $user);
                   return redirect ('/');
-               }else
+               } 
+               elseif ($user->count()==1) {
+                  Session::put('CurrentUser', $user);
+                  return redirect ('/');
+               }
+               else
 
                {
                   Session::flash('error','Ползователь не найден');

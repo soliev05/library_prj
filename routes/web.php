@@ -29,9 +29,9 @@ Route::get('/search',[HomeController::class, 'search']);
 
 
 
-// Route::get('/', function () {
-//    return view('books.index4');
-// });
+Route::get('/contact', function () {
+   return view('books.contact');
+});
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -92,31 +92,37 @@ Route::get('/biografiya-memuari',function (){
 });
 
 
-////////////Profile////////////
+////////////   Profile  ////////////
 Route::get('/profile',[ProfileController::class, 'profile']);
 
 //----------------------------------
 
-////////////ProfileExit////////////
+//////////// ProfileExit   ////////////
 Route::get('/exit',[ProfileExitController::class, 'exit']);
 
 //----------------------------------
 
-// ////////////корзина//////////////
+// ////////////   корзина   //////////////
 Route::get('/basket',[BasketController::class,'index']);
 Route::post('/basket',[BasketController::class,'store']);
 
 // ----------------------------------
 
-//////////////////AboutBook/////////
+//////////////////   AboutBook   /////////
 Route::get('/book/{id}',[AboutBook::class,'getBook']);
 
 //----------------------------
 
-////////////Comment////////////
+////////////   Comment   ////////////
 Route::post('/book/{id}/comment',[CommentController::class, 'addComment']);
 
 //----------------------------------
+////////////   download + popular   ////////////
+// Route::post('/book/{id}/download',[DownloadController::class, 'down']);
+
+//----------------------------------
+
+
 
 
 ////////////Download////////////

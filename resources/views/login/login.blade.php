@@ -128,7 +128,18 @@ box-sizing: border-box;
    will-change: transform,opacity;
    z-index: 0;
 }
-
+.coloRred{
+  color:red;
+  font-size:16px;
+}
+.line{
+    border-top: 3px solid #454545;
+    height: 10px;
+    width:100%;
+    border-bottom: 1px solid #454545;
+    margin: 30px 0 36px 0;
+    /* padding:100px; */
+  }
 </style>
 
 
@@ -142,14 +153,15 @@ box-sizing: border-box;
 @section('home')
 
 <div class='formLogin flex '>
-    <span>
-        {!!$errors->first()!!}
-    </span>
+   
 
 <div class="login-box">
   <h2>Login</h2>
     <form method = "post" >
-    @csrf
+    @csrf 
+    <span class='coloRred'>
+        {!!$errors->first()!!}
+    </span>
       <div class="user-box">
           
           <input type="email" name="email" required="">
@@ -159,7 +171,7 @@ box-sizing: border-box;
           <input type="password" name="password" required="">
           <label>Пароль</label>
       </div>
-        @if ($book_id)
+        @if ($book_id) 
             <input type="hidden" name='book_id' value='{{ $book_id->get("book_id") }}'>
             <input type="hidden" name='redirect' value='{{ $book_id->get("redirect") }}'>
         @endif
@@ -168,23 +180,22 @@ box-sizing: border-box;
             <input type="hidden" name='book_id' value='{{ $comment->get("book_id") }}'>
             <input type="hidden" name='redirect' value='{{ $comment->get("redirect") }}'>
         @endif 
+
+        @if ($read)
+            <input type="hidden" name='redirect' value='{{ $read->get("redirect") }}'>
+        @endif 
+
+        @if ($download)
+            <input type="hidden" name='redirect' value='{{ $download->get("redirect") }}'>
+        @endif 
       <div ><input class='submit' type="submit" name='submit'></div>
       <a href="/registrate">
         Регистрация
       </a>
     </form>
 </div>
+<div class="line"></div>
+<script type="text/javascript" src="/style/js/scripts.js"></script>
 
-
-<!--
-        <form action="" method = "post"><br>
-        @csrf
-        <p>Login<input type="text" name= "email" class="text-input required"></p><br><br>
-        <p>Password<input type="password" name = "password" class="text-input required"></p>
-        <p><input type="submit" name = "submit" value ="send"></p>
-        </form>
-
-
-        <div class="login-box">  -->
 
 @endsection
