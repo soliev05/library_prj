@@ -251,15 +251,30 @@ padding: 30px 0px 30px 30px;
                   <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                   
               </form> -->
-              <div class='flex' >
-                <div style='margin-right:20px;'>
-                    <a href="{{ Storage::url($books_id->urlFileBook) }}"> <button class='buttonD'>Читать</button></a>
-                </div>
-                <div>
-                  <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321">
-                      <button class='buttonD' style=' background-color: #4CAF50; '>Сачать</button>
-                  </a>
-                </div>
+              @if (Session::has('CurrentUser'))
+                  <div class='flex' >
+                    <div style='margin-right:20px;'>
+                        <a href="{{ Storage::url($books_id->urlFileBook) }}"> <button class='buttonD'>Читать</button></a>
+                    </div>
+                    <div>
+                      <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321">
+                          <button class='buttonD' style=' background-color: #4CAF50; '>Сачать</button>
+                      </a>
+                    </div>
+                @else 
+                <form action="/login" method='get'>
+                  <div class='flex' >
+                      <div style='margin-right:20px;'>
+                          <a href="{{ Storage::url($books_id->urlFileBook) }}"> <button class='buttonD'>Читать</button></a>
+                      </div>
+                      <div>
+                        <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321">
+                            <button class='buttonD' style=' background-color: #4CAF50; '>Сачать</button>
+                        </a>
+                      </div>
+                  </form>
+                  @endif
+
             </div>
           </div>
         </div>
