@@ -810,7 +810,12 @@ div.showcase-tooltip {
 	width:65.33%;
 }
 .one-fourth {
-	width:22%;
+	width:100%;
+	background-color:#282a2d73;
+	justify-content: space-around;
+	font-family: 'PTSansRegular';
+	margin-bottom: 10px;
+
 }
 .three-fourth {
 	width:74%;

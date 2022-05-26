@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\Registrate as RegistrateRequest;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Session;
+
 
 class Registrate extends Controller
 {
      public function index(){
-
+        if (Session::has('CurrentUser')){
+            return redirect ('/');
+        }else 
         return view('login.registrate');
      }
  

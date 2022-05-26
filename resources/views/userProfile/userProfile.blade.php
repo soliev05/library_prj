@@ -131,7 +131,7 @@
 
 @section('home')
 
-
+<div class="line"></div>
 <div class="contBook">
     <div class="aboutCont ">
 
@@ -141,10 +141,10 @@
         </div>
         <div class="">
           <ul class="optionList">
-            <li><a id='aColor' href="/basket">Корзина</a></li>
-            <li><a id='aColor' href="">Прочитанные книги</a></li>
-            <li><a id='aColor' href="">История</a></li>
-            <li><a id='aColor' href="/exit">Выход</a></li>
+            <li><a id='aColor' href="/basket">&#8250;&nbsp; Корзина</a></li>
+            <li><a id='aColor' href="">&#8250;&nbsp;Прочитанные книги</a></li>
+            <li><a id='aColor' href="">&#8250;&nbsp;История</a></li>
+            <li><a id='aColor' href="/exit">&#8250;&nbsp;Выход</a></li>
           </ul>
         </div>
         <!-- <img  src="https://cv8.litres.ru/pub/c/audiokniga/cover_330/67644287-ekaterina-vasina-tebe-povezlo-detka-67644287.jpg" alt=""> -->
@@ -152,14 +152,15 @@
       </div>
       <div class="permission">
         <div>
-          <div><span class='nameBook'>{{ (Session::get('CurrentUser'))->first()->name }}</span></div>
+          
           <div class="inform">
-              <div> <span>Имя:&nbsp;</span></div>
-              <div> <span>Email&nbsp;</span>{{ (Session::get('CurrentUser'))->first()->name }}</div>
-              <div><span>Дата рождения:&nbsp;</span>{{ (Session::get('CurrentUser'))->first()->name }}</div>
-              <div> <span>Телефон:&nbsp;</span>{{ (Session::get('CurrentUser'))->first()->name }}</div>
-              <div><span>Пол:&nbsp;</span>{{ (Session::get('CurrentUser'))->first()->name }}&nbsp;стр.</div>
-
+              <div> <span>Имя:&nbsp;</span>{{ (Session::get('CurrentUser'))->first()->name }}</div>
+              <div> <span>Email&nbsp;</span>{{ (Session::get('CurrentUser'))->first()->email }}</div>
+              <div><span>Дата рождения:&nbsp;</span></div>
+              <div> <span>Телефон:&nbsp;</span></div>
+              <div><span>Пол:&nbsp;</span>&nbsp;</div>
+              <div><button>Редактировать</button></div>
+              <div><button>Изменить пароль</button></div>
              
 
             
@@ -169,7 +170,7 @@
 
     </div>
 </div>
-
+<div class="line"></div>
   
 @endsection
 

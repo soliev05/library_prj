@@ -40,7 +40,7 @@ class UserListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'User';
+        return 'Администратор';
     }
 
     /**
@@ -50,7 +50,7 @@ class UserListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'All registered users';
+        return 'Все зарегистрированные администраторы';
     }
 
     /**
@@ -71,7 +71,7 @@ class UserListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make(__('Add'))
+            Link::make(__('Добавить'))
                 ->icon('plus')
                 ->route('platform.systems.users.create'),
         ];

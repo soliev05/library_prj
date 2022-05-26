@@ -171,7 +171,7 @@ class ExampleFieldsAdvancedScreen extends Screen
                     DateTimer::make('format24hr')
                         ->title('Format 24hr')
                         ->enableTime()
-                        ->format24hr(),
+                        ->format('Y-m-d'),
 
                     DateTimer::make('custom')
                         ->title('Custom format')

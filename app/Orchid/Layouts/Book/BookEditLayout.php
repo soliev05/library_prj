@@ -11,6 +11,8 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Rows;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\DateTimer;
+use Orchid\Screen\Fields\Select;
 
 
 class BookEditLayout extends Rows
@@ -51,23 +53,44 @@ class BookEditLayout extends Rows
                 ->title(__('Автор'))
                 ->placeholder(__('Автор')),
 
-            Input::make('books.genre')
-                ->type('text')
+          
+
+            Select::make('books.genre')
                 ->required()
                 ->title(__('Жанр'))
+                ->options([
+                    'Cпорт'  => 'Cпорт',
+                    'Хобби'  => 'Хобби',
+                    'Родителям'  => 'Родителям',
+                    'История' => 'История',
+                    'Детские книги'  => 'Детские книги',
+                    'Бизнес книги'  => 'Бизнес книги',
+                    'Биографии'  => 'Биографии',
+                    'Научная литература'  => 'Научная литература',
+                  
+                ])->empty('Не выбрано')
                 ->placeholder(__('Жанр')),
+            
 
-            Input::make('books.year_publish')
-                ->type('text')
+           
+
+            // Input::make('books.year_write')
+            //     ->type('text')
+            //     
+            //     ->title(__('Дата написания книги'))
+            //     ->placeholder(__('Дата написания книги')),
+            DateTimer::make('books.year_publish')
                 ->required()
                 ->title(__('Дата публикации'))
-                ->placeholder(__('Дата публикации')),
+                ->placeholder(__('Дата публикации'))
+                ->format('Y'),
 
-            Input::make('books.year_write')
-                ->type('text')
+            DateTimer::make('books.year_write')
                 ->required()
                 ->title(__('Дата написания книги'))
-                ->placeholder(__('Дата написания книги')),
+                ->placeholder(__('Дата написания книги'))
+                ->format('Y'),
+                
 
             Input::make('books.discription')
                 ->type('text')
@@ -88,11 +111,17 @@ class BookEditLayout extends Rows
             //     ->height(500),
 
             Upload::make('books.attachment')
-                ->title('add image'),
+                ->title('Добавить картинку не более 3Mb')
+                ->maxFiles(1)
+                ->parallelUploads(1)
+                // ->maxFileSize(1080)
+                ,
 
             Upload::make('books1.attachment')
-                ->title('add file')
-                
+                ->title('Добавить книгу(файл) не более 50Mb')
+                ->maxFiles(1)
+                ->parallelUploads(1)
+                // ->maxFileSize(1024)
             // Picture::make('picture')->storage('file'),
         ];
     }

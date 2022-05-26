@@ -73,7 +73,7 @@ class BookEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->user->exists ? 'Edit User' : 'Create User';
+        return 'Добавить книгу';
     }
 
     /**
@@ -83,7 +83,7 @@ class BookEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Details such as name, email and password';
+        return '';
     }
 
     /**

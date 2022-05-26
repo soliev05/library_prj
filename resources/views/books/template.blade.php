@@ -4,6 +4,8 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" initial-scale='1' content="width=device-width">
+
 <title> @yield('tittle')</title>
 <style>
 @font-face {
@@ -96,6 +98,19 @@ li {
     margin: 20px 0 36px 0;
     
   }
+  #butGenre{
+    border:none;
+    background-color:white;
+    font-size:14px;
+    margin-bottom:5px;
+    padding:10px;
+    width:150px;
+    text-align: inherit;
+    box-shadow: 0px 1px 0px 0 #0000006b;
+  }
+  #butGenre:hover{
+    cursor:pointer;
+  }
   
 
 /* media */
@@ -130,6 +145,11 @@ li {
 }
 .logRegistrText{
   font-size:14px;
+}
+.imgAdminMedia{
+  display:none;
+  width:25px;
+  height:25px;
 }
 }
 
@@ -200,12 +220,21 @@ jQuery(document).ready(function($){
       <ul class='ulList'>
       @if (Session::has('CurrentUser'))
           
-            <li><img alt="" src="https://avatars.mds.yandex.net/i?id=4b8d5006cc828cbe5c0d475e6ea7c7ab-5877601-images-thumbs&n=13&exp=1" height="60" width="60" class="avatar" />
-            </li> 
-            <li><a class='logRegistrText fontText' href="/profile">{{ (Session::get('CurrentUser'))->first()->name }} </a>
+            <li style="margin-right:35px;">  
+                <div>
+                    <a  href="/profile">
+                      <img class="imgAdminMedia" alt="" style='border-radius:50%;' src="https://avatars.mds.yandex.net/i?id=4b8d5006cc828cbe5c0d475e6ea7c7ab-5877601-images-thumbs&n=13&exp=1" height="60" width="60" class="avatar" />
+                    </a>
+                  </div>
+                    
+                <div style='text-align: center;' >
+                    <a class='logRegistrText fontText' href="/profile">
+                      {{ (Session::get('CurrentUser'))->first()->name }} 
+                    </a>
+                </div>  
             </li>
 
-            <li><a class='logRegistrText fontText' href="/basket">Корзина</a></li>
+            <li><a class='logRegistrText fontText' href="/basket"><img class="imgAdminMedia" src="/style/images/basket2.png" alt="">Корзина</a></li>
           
       @else
          
@@ -225,14 +254,54 @@ jQuery(document).ready(function($){
 
       <li><a >Жанры</a>
       	<ul class='fontText'>
-      	<li><a  href="/sport-zdorove">Спорт, здоровье, красота</a></li>
-      	<li><a href="/hobbi">Хобби, досуг</a></li>
-      	<li><a href="/roditelyam">Родителям</a></li>
-        <li><a href="/istoriya">История</a></li>
-        <li><a href="/detskie-knigi">Детские книги</a></li>
-        <li><a href="/biznes-knigi">Бизнес-книги</a></li>
-        <li><a href="/bografiya">Биографии и мемуары</a></li>
-        <li><a href="/uchebnaya-i-nauchnaya-literatura">Учебная и научная литература</a></li>
+          <li> 
+              <form action="/genre/" method='get'>
+                <input class='fontText' id='butGenre' type="submit" value='Спорт'> 
+                <input type="hidden" name='genre' value='sport'>
+              </form>
+              
+          </li>
+           <li>
+              <form action="/genre/" >
+                <input class='fontText' id='butGenre' type="submit" value='Хобби' ></a>
+                <input type="hidden" name='genre' value='hobbi'>
+              </form>
+            </li>
+          <form action="/genre/" >
+      	    <li> <input class='fontText' id='butGenre' type="submit" value='Родителям' ></a></li>
+            <input type="hidden" name='genre' value='roditelyam'>
+          </form>
+
+          <form action="/genre/" >
+      	    <li> <input class='fontText' id='butGenre' type="submit" value='История' ></a></li>
+            <input type="hidden" name='genre' value='istoriya'>
+          </form>
+
+          <form action="/genre/" >
+      	    <li> <input class='fontText' id='butGenre' type="submit" value='Детские книги' ></a></li>
+            <input type="hidden" name='genre' value='detskie-knigi'>
+          </form>
+
+          <form action="/genre/" >
+      	    <li> <input class='fontText' id='butGenre' type="submit" value='Бизнес книги' ></a></li>
+            <input type="hidden" name='genre' value='biznes-knigi'>
+          </form>
+
+          <form action="/genre/" >
+      	    <li> <input class='fontText' id='butGenre' type="submit" value='Биографии' ></a></li>
+            <input type="hidden" name='genre' value='bografiya'>
+          </form>
+
+
+          <form action="/genre/" >
+      	    <li> <input class='fontText' id='butGenre' type="submit" value='Научная литература' ></a></li>
+            <input type="hidden" name='genre' value='nauchnaya-literatura'>
+          </form>
+        
+
+      
+        
+
         
       	</ul>
       </li>
@@ -261,7 +330,51 @@ jQuery(document).ready(function($){
    @yield('search')
    @yield('line')
    @yield('home')
+  
   <div>  
+  <div id="footer">
+      <div class="footer-top"></div>
+      <!-- Divider -->
+      
+      
+      
+      <div class="one-fourth flex fontText" style='margin-left:30px;'>
 
+        <div style='width:250px' class=" last">
+              <h3    >Email</h3>
+              <span style='color:#e9e4e4;'>elkitob@yandex.ru</span>
+        </div>
+        <div>
+          <h4>Мы в соц. сетях</h4>
+            <div style='width:250px' id="twitter-wrapper" class='flex'>
+            
+                <div><a href="#"><img src="/style/images/icon-rss.png" alt="RSS" /></a></div>
+                <div><a href="#"><img src="/style/images/icon-facebook.png" alt="Facebook" /></a></div>
+                <div><a href="#"><img src="/style/images/icon-twitter.png" alt="Twitter" /></a></div>
+                <div><a href="#"><img src="/style/images/icon-googleplus.png" alt="Google+" /></a></div>
+          
+            </div>
+        </div>
+        <div style='width:250px'>
+              <h3>Наши контакты</h3>
+              <span style='color:#e9e4e4;'>+7123456789</span>
+              <span style='color:#e9e4e4;' >+7123456789</span>
+        </div>
+            
+            <div class="clear"></div>
+      </div>
+  </div>
+  <!-- End Container -->
+<!--   
+  <div id="copyright" class="opacity">
+   
+  </div> -->
 
+<!-- End Wrapper --> 
+
+<script type="text/javascript" src="/style/js/scripts.js"></script>
+</body>
+</html>
+<!--   
     @yield('footer')
+    <script type="text/javascript" src="/style/js/scripts.js"></script> -->

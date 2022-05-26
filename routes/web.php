@@ -11,7 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileExitController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +33,12 @@ Route::get('/contact', function () {
    return view('books.contact');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// ==============  genre ===========
+// Route::get('/genre/roditelyam', [GenreController::class,'roditelyam']);
+
+
+Route::get('/genre/', [GenreController::class,'getBookByGenre']);
+// ================///=======================
 
 
 Route::post('/registrate', [Registrate::class,'registrate']);

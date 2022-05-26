@@ -2,7 +2,7 @@
 
 
 @section('tittle')
-    biznes
+    elKitob
 @endsection
 
 @section('home')
@@ -35,8 +35,8 @@
 
 <form action='/search' method="get" class='form'>
       <label for="search"></label>
-      <input id="search" type="search" name="search" placeholder="Поиск..." autofocus required />
-      <button class='buttonsearch' type="submit">Go </button>    
+      <input class='inputS input' id="search" type="search" name="search" placeholder="Поиск..." autofocus required />
+      <button class='buttonsearch buttonS' type="submit">Go </button>    
   </form> 
 @endsection
 
@@ -81,7 +81,7 @@ html {
   border-radius: var(--rad);
 }
 
-input, button {
+.inputS, .buttonS {
   height: 50px;
   font-family: var(--font-fam);
   border: 0;
@@ -89,7 +89,7 @@ input, button {
   font-size: 1.8rem;
 }
 
-input[type=search] {
+.input[type=search] {
   outline: 0;
   width: 100%;
   background: var(--color-light);
@@ -115,27 +115,27 @@ input[type=search] {
   border-radius: 0 var(--rad) var(--rad) 0;
 }
 
-input:not(:-moz-placeholder-shown) {
+.input:not(:-moz-placeholder-shown) {
   border-radius: var(--rad) 0 0 var(--rad);
   width: calc(100% - var(--btn-width));
 }
 
-input:not(:-ms-input-placeholder) {
+..input:not(:-ms-input-placeholder) {
   border-radius: var(--rad) 0 0 var(--rad);
   width: calc(100% - var(--btn-width));
 }
 
-input:not(:placeholder-shown) {
+.input:not(:placeholder-shown) {
   border-radius: var(--rad) 0 0 var(--rad);
   width: calc(100% - var(--btn-width));
 }
-input:not(:-moz-placeholder-shown) + button {
+.input:not(:-moz-placeholder-shown) + button {
   display: block;
 }
-input:not(:-ms-input-placeholder) + button {
+.input:not(:-ms-input-placeholder) + button {
   display: block;
 }
-input:not(:placeholder-shown) + button {
+.input:not(:placeholder-shown) + button {
   display: block;
 }
 
@@ -156,43 +156,10 @@ label {
 <div class="line"></div>
 
 @endsection
-
+<!-- 
 @section('footer')
 
-<div id="footer">
-      <div class="footer-top"></div>
-      <!-- Divider -->
-      <div class="one-fourth">
-        <h3>Latest Posts</h3>
-        <ul class="latest-posts">
-          <li><span class="date"><em class="day">22</em><em class="month">Jun</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-          <li><span class="date"><em class="day">14</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-          <li><span class="date"><em class="day">11</em><em class="month">May</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-          <li><span class="date"><em class="day">08</em><em class="month">Apr</em></span> <a href="#">Vivamus soder pharetra libero atincidunt</a> </li>
-        </ul>
-      </div>
-      
-      <div class="one-fourth">
-        <h3>Twitter</h3>
-        <div id="twitter-wrapper">
-          <div id="twitter"></div>
-          <span class="username"><a href="http://twitter.com/elemisdesign">→ Follow @elemisdesign</a></span> </div>
-      </div>
-      <div class="one-fourth last">
-        
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <!-- End Container -->
-<!--   
-  <div id="copyright" class="opacity">
-   
-  </div> -->
-
-<!-- End Wrapper --> 
 
 <script type="text/javascript" src="/style/js/scripts.js"></script>
-</body>
-</html>
-@endsection
+
+@endsection -->

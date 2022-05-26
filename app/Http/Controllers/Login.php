@@ -11,6 +11,9 @@ class Login extends Controller
 
       public function login(Request $request){
 
+         if (Session::has('CurrentUser')){
+            return redirect ('/');
+        }else 
             $book_id = $request->request;
             $comment = $request->request;
             

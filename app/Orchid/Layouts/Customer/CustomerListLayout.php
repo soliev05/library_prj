@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace App\Orchid\Layouts\Book;
+namespace App\Orchid\Layouts\Customer;
 
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
@@ -13,8 +13,9 @@ use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Persona;
 use App\Orchid\Screens\Books\BookEditScreen;
 use Orchid\Platform\Models\User;
+use App\Models\Customer;
 
-class BookListLayout extends Table
+class CustomerListLayout extends Table
 {
     /**
      * Data source.
@@ -24,7 +25,7 @@ class BookListLayout extends Table
      *
      * @var string
      */
-    protected $target = 'books';
+    protected $target = 'customer';
 
     /**
      * Get the table cells to be displayed.
@@ -34,28 +35,22 @@ class BookListLayout extends Table
     protected function columns(): array
     {
         return [
-             TD::make('name','Название книг'),
-             TD::make('author','Автор'),
-             TD::make('genre','Жанр'),
-             TD::make('year_publish','Год публикации'),
-             TD::make('description','Описание'),
+             TD::make('name','Имя'),
+             TD::make('email','Email'),
+             TD::make('created_at','Дата регистрация'),
              TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(function (Books $books) {
+                ->render(function (Customer $customer) {
                     return DropDown::make()
                         ->icon('options-vertical')
                         ->list([
-
-                            Link::make(__('Редактировать'))
-                                ->route('platform.book.edit',$books->id)
-                                ->icon('pencil'),
 
                             Button::make(__('Удалить'))
                                 ->icon('trash')
                                 ->confirm(__('Once the account '))
                                 ->method('remove', [
-                                    'id' => $books->id,
+                                    'id' => $customer->id,
                                 ]),
 
                         ]);

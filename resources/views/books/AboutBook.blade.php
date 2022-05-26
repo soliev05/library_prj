@@ -112,6 +112,21 @@
 .user > img{
   border-radius:50%;
 }
+.buttonD {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  background-color: #e7e7e7; color: black;
+  border-radius: 10px;
+}
+.buttonD:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
 /* media 300px */
 @media  (max-width: 400px){
@@ -170,9 +185,9 @@ padding: 30px 0px 30px 30px;
 @extends('books.template')
 
 @section('tittle')
-    111111111
+    {{ $books_id->name }}
 @endsection
-
+<script type="text/javascript" src="/style/js/scripts.js"></script>
 @section('home')
 <div class="line"></div>
 <div class="contBook">
@@ -198,7 +213,7 @@ padding: 30px 0px 30px 30px;
                           <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                           <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                           @csrf
-                          <input type='submit' name='removeFromBasket' value='Удалить из корзины'>
+                          <input class='buttonD'type='submit' name='removeFromBasket' value='Удалить из корзины'>
 
                         </form>
                     @else
@@ -207,7 +222,7 @@ padding: 30px 0px 30px 30px;
                         <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                         <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                         @csrf
-                        <input type='submit' name='AddToBasket' value='Добавить в Корзину'>
+                        <input class='buttonD'  type='submit' name='AddToBasket' value='Добавить в Корзину'>
 
                       </form>
                   @endif
@@ -217,43 +232,44 @@ padding: 30px 0px 30px 30px;
                    
                       <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                       <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
-                      <input type="submit" value='Добавить в Корзину'>
+                      <input class='buttonD' type="submit" value='Добавить в Корзину'>
                     </form>
                 @endif
               </div>
 
-              @if ( Session::has('CurrentUser') )
+           
                  
-              @else
-                   <form action="/login" method='get' >
-                      <div>
-                        <a href="{{ Storage::url($books_id->urlFileBook) }}"> <button>Читать</button></a>
-                      </div>
-                      <input type="hidden" name='read' value='read'>
-                      <input type="hidden" name='redirect' value='{{ Request::url() }}'> 
-                   
-                  </form>
-              @endif
+              
+                      
              
 
-              <form action="/book/{id}/download" method='get'>
+              <!-- <form action="/book/{id}/download" method='get'>
                 <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="Сачать">
                       <button>Сачать</button>
                   </a>
                   <input type="hidden" name='book_id' value='{{ $books_id->id }}'>
                   <input type="hidden" name='redirect' value='{{ Request::url() }}'>
                   
-              </form>
-              <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321">
-                      <button>Сачать</button>
+              </form> -->
+              <div class='flex' >
+                <div style='margin-right:20px;'>
+                    <a href="{{ Storage::url($books_id->urlFileBook) }}"> <button class='buttonD'>Читать</button></a>
+                </div>
+                <div>
+                  <a download="{{ $books_id->name }}" href="{{ Storage::url($books_id->urlFileBook) }}" title="321">
+                      <button class='buttonD' style=' background-color: #4CAF50; '>Сачать</button>
                   </a>
-              
+                </div>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
     <div class="contAboutBook"><span>О книге:&nbsp;</span>{{ $books_id->discription }} </div>
+    <div>
+      <input style='width:200px;' type="submit" name="" id="">
+    </div>
 </div>
 
 

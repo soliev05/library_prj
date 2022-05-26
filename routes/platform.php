@@ -20,6 +20,7 @@ use Tabuna\Breadcrumbs\Trail;
 use \App\Orchid\Screens\Books\BooksList;
 use \App\Orchid\Screens\Books\BookEditScreen;
 use \App\Orchid\Screens\Books\BookChangeScreen;
+use \App\Orchid\Screens\CustomerList;
 /*
  *
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ use \App\Orchid\Screens\Books\BookChangeScreen;
 // Books
 Route::screen('books', BooksList::class)
     ->name('platform.books');
+
+Route::screen('customers', CustomerList::class)
+    ->name('platform.customers');
 
  Route::screen('books/create',BookEditScreen ::class)
     ->name('platform.BookEditScreen');
@@ -55,9 +59,10 @@ Route::screen('books/{books}/edit', BookChangeScreen::class)
 //    });
 
 
-
-Route::screen('/main', PlatformScreen::class)
-    ->name('platform.main');
+Route::screen('/main', BooksList::class)
+    ->name('platform.books');
+// Route::screen('', PlatformScreen::class)
+//     ->name('platform.main');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
