@@ -309,13 +309,13 @@ jQuery(document).ready(function($){
         
       </li>
 
-      <li><a href="blog.html">Аудиокниги</a>
+      <li><a href="">Аудиокниги</a>
         
       </li>
       <li><a href="/novinki">Новинки</a>
        
       </li>
-      <li><a href="button-boxes-images.html">О библиотеке</a>
+      <li><a href="/library">О библиотеке</a>
       
       </li>
       <li><a href="/contact">Контакты</a></li>

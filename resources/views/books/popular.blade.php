@@ -25,6 +25,7 @@
    @endforeach
 
 </div>
+{{ $books_list->onEachSide(2)->links() }}
 
 @endsection
 

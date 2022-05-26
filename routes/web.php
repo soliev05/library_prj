@@ -14,7 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NovinkiCintroller;
 use App\Http\Controllers\PopularCintroller;
-
+use App\Http\Controllers\AboutLibraryController;
 
 
 /*
@@ -34,7 +34,7 @@ Route::get('/search',[HomeController::class, 'search']);
 
 Route::get('/popular',[PopularCintroller::class, 'popular']);
 
-Route::get('/novinki',[NovinkiCintroller::class, 'novinki']);
+Route::get('/novinki',[NovinkiCintroller::class, 'new']);
 
 Route::get('/contact', function () {
    return view('books.contact');
@@ -57,10 +57,10 @@ Route::post('/login', [Login::class,'getLogin']);
 Route::get('/login', [Login::class,'login']);
 
 
+Route::get('/library', [AboutLibraryController::class,'library']);
 
-
-// Route::get('/books',function (){
-//     return view ('books.template', ['books_list'=> Books::all()]);
+// Route::get('/b',function (){
+//     return view ('books.portfolio');
 // });
 
 Route::get('/biznes-knigi',function (){
