@@ -16,6 +16,11 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
+use App\Orchid\Screens\Books\BookEditScreen;
+// use App\Orchid\Layouts\Book\BookListLayout;
+use App\Orchid\Layouts\Book\BookListLayout;
+use App\Orchid\Screens\Books\BooksList;
+
 
 class UserProfileScreen extends Screen
 {
@@ -69,25 +74,25 @@ class UserProfileScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::block(UserEditLayout::class)
-                ->title(__('Profile Information'))
-                ->description(__("Update your account's profile information and email address."))
-                ->commands(
-                    Button::make(__('Save'))
-                        ->type(Color::DEFAULT())
-                        ->icon('check')
-                        ->method('save')
-                ),
+            // Layout::block(UserEditLayout::class)
+            //     ->title(__('Profile Information'))
+            //     ->description(__("Update your account's profile information and email address."))
+            //     ->commands(
+            //         Button::make(__('Save'))
+            //             ->type(Color::DEFAULT())
+            //             ->icon('check')
+            //             ->method('save')
+            //     ),
 
-            Layout::block(ProfilePasswordLayout::class)
-                ->title(__('Update Password'))
-                ->description(__('Ensure your account is using a long, random password to stay secure.'))
-                ->commands(
-                    Button::make(__('Update password'))
-                        ->type(Color::DEFAULT())
-                        ->icon('check')
-                        ->method('changePassword')
-                ),
+            // Layout::block(ProfilePasswordLayout::class)
+            //     ->title(__('Update Password'))
+            //     ->description(__('Ensure your account is using a long, random password to stay secure.'))
+            //     ->commands(
+            //         Button::make(__('Update password'))
+            //             ->type(Color::DEFAULT())
+            //             ->icon('check')
+            //             ->method('changePassword')
+            //     ),
         ];
     }
 

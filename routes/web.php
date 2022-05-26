@@ -12,6 +12,10 @@ use App\Http\Controllers\ProfileExitController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\NovinkiCintroller;
+use App\Http\Controllers\PopularCintroller;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +32,9 @@ Route::get('/',[HomeController::class, 'home']);
 Route::get('/search',[HomeController::class, 'search']);
 
 
+Route::get('/popular',[PopularCintroller::class, 'popular']);
+
+Route::get('/novinki',[NovinkiCintroller::class, 'novinki']);
 
 Route::get('/contact', function () {
    return view('books.contact');

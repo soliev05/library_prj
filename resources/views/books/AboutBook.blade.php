@@ -267,9 +267,7 @@ padding: 30px 0px 30px 30px;
 
     </div>
     <div class="contAboutBook"><span>О книге:&nbsp;</span>{{ $books_id->discription }} </div>
-    <div>
-      <input style='width:200px;' type="submit" name="" id="">
-    </div>
+   
 </div>
 
 

@@ -305,14 +305,14 @@ jQuery(document).ready(function($){
         
       	</ul>
       </li>
-      <li><a class='fontText' href="portfolio.html">Популярное</a>
+      <li><a class='fontText' href="/popular">Популярное</a>
         
       </li>
 
       <li><a href="blog.html">Аудиокниги</a>
         
       </li>
-      <li><a href="fullwidth.html">Новинки</a>
+      <li><a href="/novinki">Новинки</a>
        
       </li>
       <li><a href="button-boxes-images.html">О библиотеке</a>

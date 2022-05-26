@@ -59,10 +59,10 @@ Route::screen('books/{books}/edit', BookChangeScreen::class)
 //    });
 
 
-Route::screen('/main', BooksList::class)
-    ->name('platform.books');
-// Route::screen('', PlatformScreen::class)
-//     ->name('platform.main');
+// Route::screen('', BooksList::class)
+//     ->name('platform.books');
+Route::screen('/main', PlatformScreen::class)
+    ->name('platform.main');
 
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)

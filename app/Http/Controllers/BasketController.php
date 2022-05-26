@@ -45,17 +45,14 @@ class BasketController extends Controller
             }
             $basket->user_id = Session::get('CurrentUser')->first()->id;
             $basket->book_id = $request->request->get('book_id');
-            $addBookToPopular->book_id = $request->request->get('book_id');
-
-            $addBookToPopular->save();
+        
             $basket->save();
 
         }elseif ($basket){
 
             $basket->delete();
 
-        
-           } 
+        } 
         return redirect($request->request->get('redirect'));
     }
 }

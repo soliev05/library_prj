@@ -19,7 +19,8 @@ class BookListLayout extends Table
     /**
      * Data source.
      *
-     * The name of the key to fetch it from the query.
+     * The name of the key to fetch it from the queruse App\Orchid\Screens\Books\BookEditScreen;
+use App\Orchid\Layouts\Book\BookListLayout;y.
      * The results of which will be elements of the table.
      *
      * @var string
